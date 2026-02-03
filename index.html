@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOD SOLDIERS TEAM GLOBAL | The World Shall Be Saved</title>
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation & Library Styles -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #FFD700; 
+            --gold-dark: #b8860b;
+            --black: #050505;
+            --void: #000000;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(255, 215, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND & CANVAS --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* --- CUSTOM CURSOR --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--gold); }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid var(--gold);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .display-text {
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
+            line-height: 0.9;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff 40%, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(45deg, var(--gold), #fff, var(--gold-dark));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1200px;
+            padding: 15px 30px;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo { font-size: 1.1rem; font-weight: 900; color: var(--white); text-decoration: none; }
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: rgba(255,255,255,0.6); 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        .menu-toggle { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .grid-floor {
+            position: absolute;
+            bottom: -30%; left: -50%;
+            width: 200%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(70deg);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* --- STATS --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,0,0,0.3);
+        }
+        .stat-item {
+            padding: 50px 20px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number { 
+            font-size: 3rem; font-weight: 900; 
+            font-family: 'Cinzel', serif; color: var(--gold); 
+        }
+
+        /* --- BENTO SYSTEM --- */
+        .section-padding { padding: 120px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 60px; }
+        .section-tag { color: var(--gold); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 10px; display: block; }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 320px;
+            gap: 20px;
+        }
+
+        .tilt-card {
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: border-color 0.3s;
+        }
+
+        .span-2 { grid-column: span 2; }
+        .span-row-2 { grid-row: span 2; }
+
+        .card-inner {
+            width: 100%; height: 100%;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .tilt-card:hover .card-bg { transform: scale(1.1); opacity: 0.2; }
+        .tilt-card:hover { border-color: var(--gold-dark); box-shadow: 0 0 40px rgba(255,215,0,0.05); }
+
+        .card-title { font-size: 1.6rem; margin-bottom: 8px; color: #fff; }
+        .card-sub { color: var(--gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; }
+
+        /* --- BELIEFS --- */
+        .beliefs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .belief-item {
+            padding: 20px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+        .belief-item:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
+        .belief-number { color: var(--gold); font-weight: 900; font-family: 'Cinzel'; }
+
+        /* --- BUTTONS --- */
+        .btn-brutal {
+            padding: 18px 45px;
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-brutal::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%;
+            background: var(--gold); z-index: -1; transition: 0.4s;
+        }
+        .btn-brutal:hover::before { width: 100%; }
+        .btn-brutal:hover { color: var(--black); border-color: var(--gold); transform: translateY(-5px); }
+
+        /* --- ACCORDION --- */
+        .accordion-item {
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            padding: 20px;
+            background: var(--glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .accordion-content {
+            max-height: 0;
+            padding: 0 20px;
+            opacity: 0;
+            transition: 0.3s all ease;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding: 20px;
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: rgba(0,0,0,0.5);
+        }
+        .footer-socials { display: flex; justify-content: center; gap: 30px; font-size: 1.8rem; margin: 40px 0; }
+        .footer-socials i { color: var(--gold); transition: 0.3s; }
+        .footer-socials i:hover { transform: scale(1.2) rotate(10deg); color: #fff; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto !important; }
+            .nav-links { 
+                position: fixed; top: 80px; left: -100%; width: 100%; 
+                flex-direction: column; background: #050505; 
+                padding: 40px; transition: 0.4s; height: calc(100vh - 80px);
+            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: block; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2 { grid-column: span 1; }
+            .span-row-2 { grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-overlay"></div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">GST <span>GLOBAL</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#story">Story</a>
+            <a href="#founder">Founder</a>
+            <a href="#leaders">Leaders</a>
+            <a href="#school">Disciple School</a>
+            <a href="#missions">Missions</a>
+            <a href="#beliefs">Beliefs</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero">
+        <div class="grid-floor"></div>
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
+            <p style="letter-spacing: 6px; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; font-weight: 800; font-size: 0.8rem;">Est. 2009 • Apostolic Movement</p>
+            <h1 class="display-text">THE WORLD<br>SHALL BE <span class="gold-gradient-text">SAVED</span></h1>
+            <p style="max-width: 650px; margin: 0 auto 40px; color: #aaa; font-size: 1.1rem;">We are the Soldiers of the Cross. A generation rising to fulfill the Great Commission with power and fire.</p>
+            <a href="#contact" class="btn-brutal">Enlist as a Soldier</a>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats-grid">
+        <div class="stat-item" data-aos="fade-up">
+            <div class="stat-number">25+</div>
+            <div class="section-tag">States Reached</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-number">3K+</div>
+            <div class="section-tag">Souls/Meeting</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number">12</div>
+            <div class="section-tag">Frontline Divisions</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-number">24/7</div>
+            <div class="section-tag">War Room Fire</div>
+        </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section id="story" class="section-padding">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;" class="responsive-flex">
+            <div data-aos="fade-right">
+                <span class="section-tag">THE GENESIS</span>
+                <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 30px;">"I LEFT THE 99 FOR THE ONE"</h2>
+                <p style="color: #aaa; font-size: 1.1rem; line-height: 1.8;">
+                    In 2009, a young missionary in South India cried out to God after walking all day to preach to only five people. That night, a vision shook his world. The Holy Spirit whispered: <strong>"The World Shall Be Saved."</strong> 
+                    <br><br>
+                    What started as a single man's cry has exploded into a global movement reaching thousands face-to-face across 25+ states.
+                </p>
+            </div>
+            <div style="position: relative;" data-aos="zoom-in">
+                <div style="border: 1px solid var(--gold); border-radius: 30px; padding: 15px; transform: rotate(2deg);">
+                    <img src="https://images.unsplash.com/photo-1509024644558-2f56ce76c490?auto=format&fit=crop&w=800&q=80" alt="Crusade" style="width: 100%; border-radius: 20px; display: block;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="founder" class="section-padding" style="background: rgba(255,215,0,0.02);">
+        <div class="section-header">
+            <span class="section-tag">THE GENERAL</span>
+            <h2>OUR FOUNDER</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="tilt-card span-2 span-row-2">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-inner">
+                    <h3 class="card-title" style="font-size: 2.5rem;">K. Daniel</h3>
+                    <span class="card-sub">FOUNDER & CHIEF EVANGELIST</span>
+                    <p style="margin-top: 15px; color: #ccc;">Leading massive open-air campaigns across India, witnessing thousands of decisions for Christ in single services.</p>
+                </div>
+            </div>
+            
+            <div id="leaders" class="tilt-card span-2">
+                <div class="card-inner">
+                    <span class="section-tag">COMMANDERS</span>
+                    <h3 class="card-title">MISSIONS LEADERS</h3>
+                    <div style="display: flex; gap: 30px; margin-top: 20px;">
+                        <div>
+                            <p style="color: var(--gold); font-weight: 700;">Ps. Arvind Singh</p>
+                            <p style="font-size: 0.8rem; color: #888;">North India Leader</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gold); font-weight: 700;">Bro. Vijay Ashish</p>
+                            <p style="font-size: 0.8rem; color: #888;">South India Leader</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gold); font-weight: 700;">Ps. Israel Sagar</p>
+                            <p style="font-size: 0.8rem; color: #888;">North East Leader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tilt-card span-2">
+                <div class="card-inner">
+                    <i class="fas fa-quote-left" style="color: var(--gold); font-size: 2rem; margin-bottom: 15px;"></i>
+                    <p style="font-style: italic; color: #eee; font-size: 1.1rem;">"The harvest is plentiful, but the laborers are few. We are training a generation to be the answer."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCIPLE SCHOOL -->
+    <section id="school" class="section-padding">
+        <div class="section-header">
+            <span class="section-tag">TRAINING GROUND</span>
+            <h2>JESUS DISCIPLE SCHOOL</h2>
+        </div>
+        <div class="bento-grid" style="grid-auto-rows: 280px;">
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <i class="fas fa-heart" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">BORN AGAIN</h3>
+                    <p style="font-size: 0.8rem; color: #888;">Transformation through the renewal of the mind. (Romans 12:2)</p>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <i class="fas fa-book-open" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">LIVING WORD</h3>
+                    <p style="font-size: 0.8rem; color: #888;">Sowing into the Spirit to reap eternal life. (Galatians 6:8)</p>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <i class="fas fa-cross" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">DENY SELF</h3>
+                    <p style="font-size: 0.8rem; color: #888;">Taking up the cross daily to follow Him. (Matthew 16:24)</p>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <i class="fas fa-fire" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">FIRE BAPTISM</h3>
+                    <p style="font-size: 0.8rem; color: #888;">Empowered for witness and supernatural ministry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINISTRIES -->
+    <section id="missions" class="section-padding" style="background: #000;">
+        <div class="section-header">
+            <span class="section-tag">FRONTLINES</span>
+            <h2>MINISTRY DIVISIONS</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="tilt-card span-2">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="card-inner">
+                    <h3 class="card-title">LOST SHEEP MISSION</h3>
+                    <p style="color: #aaa;">Aggressive unreached village evangelism across India.</p>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <h3 class="card-title">WAR ROOM</h3>
+                    <span class="card-sub">24/7 INTERCESSION</span>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="card-inner">
+                    <h3 class="card-title">HOPE MISSION</h3>
+                    <span class="card-sub">PRISONS & REHABS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BELIEFS -->
+    <section id="beliefs" class="section-padding">
+        <div class="section-header">
+            <span class="section-tag">FOUNDATION</span>
+            <h2>OUR CORE BELIEFS</h2>
+        </div>
+        <div class="beliefs-grid">
+            <div class="belief-item"><span class="belief-number">01</span> True Repentance</div>
+            <div class="belief-item"><span class="belief-number">02</span> Born Again Life</div>
+            <div class="belief-item"><span class="belief-number">03</span> Water Baptism</div>
+            <div class="belief-item"><span class="belief-number">04</span> One God</div>
+            <div class="belief-item"><span class="belief-number">05</span> The Father, Son & Spirit</div>
+            <div class="belief-item"><span class="belief-number">06</span> Divine Healing</div>
+            <div class="belief-item"><span class="belief-number">07</span> Holy Spirit Baptism</div>
+            <div class="belief-item"><span class="belief-number">08</span> Eternal Life & Judgment</div>
+        </div>
+
+        <div style="margin-top: 80px; max-width: 800px;">
+            <div class="accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">Why do we need Jesus? <i class="fas fa-chevron-down"></i></div>
+                <div class="accordion-content">For all have sinned and fall short of the glory of God. Jesus provides the only way to reconciliation with the Father through His sacrifice on the cross.</div>
+            </div>
+            <div class="accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">Who is Jesus Christ? <i class="fas fa-chevron-down"></i></div>
+                <div class="accordion-content">Jesus is the Son of God, the Savior of the world who died for our sins and rose again on the third day, conquering death forever.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <div data-aos="fade-up">
+            <h2 style="font-size: 3.5rem; margin-bottom: 20px;">JOIN THE ARMY</h2>
+            <p style="color: #888; max-width: 600px; margin: 0 auto 40px;">The harvest is plentiful, but the laborers are few. Step into your destiny today.</p>
+            
+            <div style="margin-bottom: 50px;">
+                <p style="font-size: 1.2rem; color: var(--gold); margin-bottom: 10px;"><i class="fas fa-phone"></i> +91 8099574874</p>
+                <p style="font-size: 1.2rem;"><i class="fas fa-envelope"></i> godsoldiersteam@gmail.com</p>
+            </div>
+
+            <a href="mailto:godsoldiersteam@gmail.com" class="btn-brutal">ENLIST NOW</a>
+            
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <p style="margin-top: 50px; font-size: 0.75rem; color: #444; letter-spacing: 2px;">© 2026 GOD SOLDIERS TEAM GLOBAL • DESIGNED FOR GLORY</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true, mirror: false });
+
+        // Navigation Mobile Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Close menu when link clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // 1. BACKGROUND PARTICLES (Unified System)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.1;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.color = Math.random() > 0.85 ? '#FFD700' : '#444';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Mouse interaction
+                if (mouse.x && mouse.y) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 120) {
+                        this.x -= dx * 0.02;
+                        this.y -= dy * 0.02;
+                    }
+                }
+
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = window.innerWidth < 768 ? 60 : 150;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles();
+        animateParticles();
+
+        // 2. CURSOR LOGIC
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+            outline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+
+        // 3. 3D TILT EFFECT
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                card.style.transform = `perspective(1000px) rotateX(${-dy/15}deg) rotateY(${dx/15}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+
+        // 4. ACCORDION
+        function toggleAccordion(el) {
+            el.classList.toggle('active');
+        }
+
+        // 5. PARALLAX GRID
+        window.addEventListener('scroll', () => {
+            const floor = document.querySelector('.grid-floor');
+            if (floor) {
+                floor.style.transform = `perspective(500px) rotateX(70deg) translateY(${window.pageYOffset * 0.15}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
