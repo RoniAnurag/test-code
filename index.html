@@ -117,7 +117,7 @@
             top: 20px; left: 50%;
             transform: translateX(-50%);
             width: 95%;
-            max-width: 1300px;
+            max-width: 1350px;
             padding: 15px 30px;
             z-index: 1000;
             background: rgba(5, 5, 5, 0.8);
@@ -193,7 +193,9 @@
             border: 4px solid var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
         }
         .founder-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .founder-quote { margin-top: 40px; font-style: italic; color: var(--gold); font-size: 1.1rem; padding: 0 30px; }
+        .founder-title { font-size: 3rem; margin-bottom: 15px; color: var(--white); }
+        .founder-description { color: #ccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .founder-quote { font-style: italic; color: #fff; font-size: 1.1rem; padding: 0 20px; max-width: 850px; margin: 0 auto; line-height: 1.6; }
 
         /* --- LEADERS --- */
         .leaders-list { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
@@ -209,7 +211,7 @@
         .leader-info p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
 
         /* --- TESTIMONIALS SLIDER --- */
-        .testimonials-section { background: rgba(255, 255, 255, 0.02); overflow: hidden; padding: 80px 0; }
+        .testimonials-section { background: #fafafa; color: #000; overflow: hidden; padding: 100px 0; }
         .testimonials-swiper { padding: 40px 0 80px; }
         .testimonial-slide {
             max-width: 900px;
@@ -217,30 +219,31 @@
             display: flex;
             align-items: center;
             gap: 50px;
-            opacity: 0;
-            transition: 0.8s;
+            padding: 0 20px;
         }
-        .swiper-slide-active .testimonial-slide { opacity: 1; }
         
         .t-img-wrapper {
             width: 250px; height: 250px; border-radius: 50%; overflow: hidden;
-            flex-shrink: 0; border: 3px solid var(--gold); position: relative;
+            flex-shrink: 0; border: none; background: #e0f0ef;
         }
         .t-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         
-        .t-content { position: relative; }
+        .t-content { position: relative; text-align: left; }
         .t-content .fa-quote-left { 
-            position: absolute; top: -20px; left: -30px; 
-            font-size: 2rem; color: var(--gold); opacity: 0.3; 
+            position: absolute; top: -10px; left: -40px; 
+            font-size: 1.5rem; color: #000; opacity: 1; 
         }
-        .t-text { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 25px; }
-        .t-author { font-weight: 700; color: var(--white); font-size: 1.2rem; display: block; }
-        .t-region { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        .t-content .fa-quote-right {
+            position: absolute; bottom: 60px; right: -20px;
+            font-size: 1.5rem; color: #000; opacity: 1;
+        }
+        .t-text { font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 25px; }
+        .t-author { font-weight: 800; color: #000; font-size: 1.2rem; display: block; border-top: 3px solid #6b1d4f; padding-top: 10px; width: fit-content; }
+        .t-region { color: #555; font-size: 0.8rem; font-style: italic; }
 
-        /* Custom Swiper Buttons */
-        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; transform: scale(0.6); }
+        .swiper-button-next, .swiper-button-prev { color: #555 !important; transform: scale(0.6); }
         .swiper-pagination-bullet { background: #444 !important; opacity: 1; }
-        .swiper-pagination-bullet-active { background: var(--gold) !important; width: 25px !important; border-radius: 5px !important; }
+        .swiper-pagination-bullet-active { background: #6b1d4f !important; width: 25px !important; border-radius: 5px !important; }
 
         /* --- BENTO SYSTEM --- */
         .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 320px; gap: 20px; }
@@ -252,6 +255,33 @@
         .card-inner { width: 100%; height: 100%; padding: 35px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); position: relative; z-index: 2; }
         .card-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.4; transition: 0.6s; }
         .tilt-card:hover .card-bg { transform: scale(1.1); opacity: 0.2; }
+
+        /* --- BRUTALIST STATS --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-item {
+            padding: 40px 20px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(255,215,0,0.05); }
+
+        .stat-number { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold); 
+            line-height: 1;
+        }
 
         /* --- BELIEFS --- */
         .beliefs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 40px; }
@@ -280,7 +310,8 @@
             .bento-grid { grid-template-columns: repeat(2, 1fr); }
             .leader-row { flex-direction: column; text-align: center; }
             .testimonial-slide { flex-direction: column; text-align: center; padding: 0 40px; }
-            .t-content .fa-quote-left { display: none; }
+            .t-content .fa-quote-left, .t-content .fa-quote-right { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -314,11 +345,11 @@
         <a href="#" class="logo">GOD SOLDIERS TEAM <span>GLOBAL</span></a>
         <div class="nav-links" id="navLinks">
             <a href="#home">Home</a>
-            <a href="#story">Story</a>
-            <a href="#founder">Founder</a>
-            <a href="#leaders">Leaders</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#school">Disciple School</a>
+            <a href="#story">Our Story</a>
+            <a href="#founder">Our Founder</a>
+            <a href="#leaders">Missions Leaders</a>
+            <a href="#testimonials">Soldier's Testimonials</a>
+            <a href="#school">Jesus Disciple School</a>
             <a href="#missions">Missions</a>
             <a href="#beliefs">Beliefs</a>
             <a href="#contact">Contact</a>
@@ -339,39 +370,59 @@
         </div>
     </header>
 
-    <!-- BRUTALIST STATS -->
-    <section class="stats-grid">
+    <!-- STATS (ANIMATED COUNTER) -->
+    <section class="stats-grid" id="stats-section">
         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="stat-number">25+</div>
-            <div class="section-tag">States Reached</div>
+            <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">States Reached</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="stat-number">3K</div>
-            <div class="section-tag">Souls/Meeting</div>
+            <div class="stat-number"><span class="counter" data-target="3000">0</span></div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">Souls/Meeting</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="stat-number">12</div>
-            <div class="section-tag">Ministries</div>
+            <div class="stat-number"><span class="counter" data-target="12">0</span></div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">Ministries</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
             <div class="stat-number">24/7</div>
-            <div class="section-tag">War Room</div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">War Room</div>
+        </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" class="section-padding">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center;">
+            <div data-aos="fade-right">
+                <span class="section-tag">THE GENESIS</span>
+                <h2 style="font-size: 3.5rem; font-family: 'Cinzel'; line-height: 1; margin-bottom: 30px;">"I LEFT THE 99 FOR THE ONE"</h2>
+                <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.8;">
+                    In 2009, a missionary in South India cried out to God after walking all day to preach to only five people. That night, a vision shook his world. The Holy Spirit whispered: <strong>"The World Shall Be Saved."</strong> 
+                    Today, GST Global is a fire burning across nations.
+                </p>
+                <a href="#leaders" class="btn-brutal">Meet The General</a>
+            </div>
+            <div data-aos="zoom-in" style="position: relative;">
+                <div style="border: 1px solid var(--gold); border-radius: 30px; padding: 15px; transform: rotate(2deg);">
+                    <img src="https://images.unsplash.com/photo-1509024644558-2f56ce76c490?auto=format&fit=crop&w=800&q=80" alt="Crusade" style="width: 100%; border-radius: 20px; display: block;">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FOUNDER -->
-    <section id="founder" class="section-padding">
+    <section id="founder" class="section-padding" style="background: rgba(0,0,0,0.3);">
         <div class="founder-container" data-aos="fade-up">
             <div class="founder-img-wrapper">
                 <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="K. Daniel Founder">
             </div>
-            <h2 style="font-size: 3rem; margin-bottom: 0;">OUR FOUNDER</h2>
+            <h2 class="founder-title">Our Founder</h2>
             <div class="divider-gold"></div>
-            <p style="color: #ccc; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-                K. Daniel is the founder of GOD SOLDIERS TEAM GLOBAL. He is an evangelist who has spent most of his ministry preaching the gospel in more than 25 states in India and globally. As a missionary, Daniel has led thousands of people to Christ face-to-face through open-air evangelistic campaigns in some of the most dangerous and remote locations on earth.
+            <p class="founder-description">
+                K.Daniel is the founder of GOD SOLDIERS TEAM GLOBAL. He is an evangelist who has spent most of his ministry preaching the gospel in more than 25 states in India and globally. As a missionary, Daniel has led thousands of people to Christ face-to-face through open-air evangelistic campaigns in some of the most dangerous and remote locations on earth.
             </p>
             <p class="founder-quote">
-                “God is working to create a community of redeemed people from every tribe, tongue and nation for his glory. Advance his kingdom.”
+                “God is working to create a community of redeemed people from every tribe, tongue and nation for his glory. This will help you better understand of God's mission (missio-Dei) and the vital role of Christ Followers is called to play in advancing his kingdom.”
             </p>
         </div>
     </section>
@@ -379,65 +430,61 @@
     <!-- LEADERS -->
     <section id="leaders" class="section-padding">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">COMMANDERS</span>
             <h2 style="font-size: 2.5rem;">MISSIONS LEADERS</h2>
             <div class="divider-gold"></div>
         </div>
         
         <div class="leaders-list">
-            <div class="leader-row" data-aos="fade-left">
+            <div class="leader-row" data-aos="fade-up">
                 <div class="leader-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Ps. Arvind"></div>
                 <div class="leader-info">
-                    <h3>Ps. Arvind Kumar Singh</h3>
-                    <span class="subtitle">(Missions Leader - North India Team)</span>
-                    <p>Overseeing हिमाचल, उत्तराखंड, पंजाब, हरियाणा, राजस्थान, यूपी, एमपी, छत्तीसगढ़, गुजरात, महाराष्ट्र, बिहार और झारखंड.</p>
+                    <h3>Ps.Arvind Kumar Singh</h3>
+                    <span class="subtitle">(Missions Leader- North India Team)</span>
+                    <p>North India includes the states of Himachal Pradesh, Uttarakhand, Punjab and Haryana, Rajasthan, Uttar Pradesh, Madhya Pradesh, Chhattisgarh, Goa, Gujarat, Maharashtra, Bihar, Jharkhand, and West Bengal, Chandigarh, Delhi, Jammu and Kashmir and Ladakh.</p>
                 </div>
             </div>
-            <div class="leader-row" data-aos="fade-right">
+            <div class="leader-row" data-aos="fade-up">
                 <div class="leader-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="Ps. Israel"></div>
                 <div class="leader-info">
                     <h3>Ps. Israel Sagar</h3>
-                    <span class="subtitle">(Missions Leader - North-East Part India)</span>
-                    <p>North-East includes states of Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura and Sikkim.</p>
+                    <span class="subtitle">(Missions Leader-North-East Part India)</span>
+                    <p>North-East includes states of Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura and Sikkim.</p>
                 </div>
             </div>
-            <div class="leader-row" data-aos="fade-left">
+            <div class="leader-row" data-aos="fade-up">
                 <div class="leader-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80" alt="Bro. Vijay"></div>
                 <div class="leader-info">
-                    <h3>Bro. G Vijay Ashish</h3>
-                    <span class="subtitle">(Missions Leader - Southern Part India)</span>
-                    <p>South India includes five states- Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana.</p>
+                    <h3>Bro.G Vijay Ashish</h3>
+                    <span class="subtitle">(Missions Leader-Southern Part india)</span>
+                    <p>South India includes five states-Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOLDIER'S TESTIMONIALS SLIDER -->
+    <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials-section">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">VOICES FROM THE FRONT</span>
             <h2 style="font-size: 2.5rem;">SOLDIER'S TESTIMONIALS</h2>
-            <div class="divider-gold"></div>
+            <div class="divider-gold" style="background: #6b1d4f;"></div>
         </div>
 
         <div class="swiper testimonials-swiper">
             <div class="swiper-wrapper">
-                <!-- Testimonial 1 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Soldier 1">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Srimati Anicha Churin">
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I am Srimati Anicha Churin. In 2022, I met Pastor Israel Sagar when he preached at our church. Through Ecclesiastes 11:9-10, my life was transformed. I joined the ministry, letting go of many mistakes and sins. I am grateful to Almighty God, through whom my life has changed.</p>
+                            <p class="t-text">I am Srimati Anicha Churin. In 2022, I met Pastor Israel Sagar when he preached at our church. Through Ecclesiastes 11:9-10, my life was transformed. I joined the ministry, letting go of many mistakes and sins. Despite my father’s and sister’s illnesses, I remained in the ministry, and God continues to guide me. I am grateful to Almighty God, through whom my life has changed.</p>
+                            <i class="fas fa-quote-right"></i>
                             <span class="t-author">Srimati Anicha Churin</span>
                             <span class="t-region">North-East Missions Team</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 2 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
@@ -445,134 +492,13 @@
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I was lost in addiction and darkness until GST Global visited my village. The power of the Cross broke my chains in one meeting. Today, I am a frontline soldier preaching the same freedom to others in the villages of Bihar.</p>
+                            <p class="t-text">I was lost in addiction and darkness until GST Global visited my village. The power of the Cross broke my chains in one meeting. Today, I am a frontline soldier preaching freedom to others in the villages of Bihar.</p>
                             <span class="t-author">Samuel Raj</span>
                             <span class="t-region">North India Team</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 3 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80" alt="Soldier 3">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Serving in the War Room has taught me the power of intercession. We have seen literal miracles—cancers healed and families restored—just by standing in the gap for the world. GST is truly an army of God.</p>
-                            <span class="t-author">Mary Kutty</span>
-                            <span class="t-region">South India Prayer Division</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Soldier 4">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I joined the Lost Sheep Mission and my perspective on life shifted. Seeing the faces of people who have never heard the name of Jesus brings a fire that nothing can quench. The world shall be saved!</p>
-                            <span class="t-author">Ps. Rahul Sharma</span>
-                            <span class="t-region">Himachal Missions</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 5 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Soldier 5">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Disciple School was the most intense 3 months of my life. It stripped away my ego and filled me with a passion for souls. I am now sent out, and the Lord is working signs and wonders through our team.</p>
-                            <span class="t-author">Priya Das</span>
-                            <span class="t-region">Disciple School Alumni</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 6 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80" alt="Soldier 6">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">God Soldier's Team is not just an organization; it's a family of warriors. The unity we have while preaching in remote jungles of Chhattisgarh is supernatural. No weapon formed against us prospers.</p>
-                            <span class="t-author">Amit Singh</span>
-                            <span class="t-region">Frontline Evangelist</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 7 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Soldier 7">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">My family was on the brink of collapse due to sickness. After the GST team prayed for us, a miracle happened overnight. Now my entire family serves the Lord. This movement brings life wherever it goes.</p>
-                            <span class="t-author">Esther Rani</span>
-                            <span class="t-region">Andhra Pradesh</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 8 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=400&q=80" alt="Soldier 8">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Preaching in prisons has shown me that no one is beyond God's reach. We see hard-hearted criminals weeping at the foot of the Cross. This is the true Gospel of power that K. Daniel taught us.</p>
-                            <span class="t-author">Joseph Abraham</span>
-                            <span class="t-region">Hope Mission (Prison Ministry)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 9 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=400&q=80" alt="Soldier 9">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I witnessed a whole village in Odisha renounce idols and embrace Jesus in a single weekend. The harvest is truly plentiful! GST provides the training and the spirit to reap this harvest.</p>
-                            <span class="t-author">David Kumar</span>
-                            <span class="t-region">Odisha Missions Team</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 10 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" alt="Soldier 10">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">The fire of the Holy Spirit is real. I felt it the first time I joined the GST global prayer call. It changed my cold heart into a burning torch for my neighbors. We are taking the world for Jesus!</p>
-                            <span class="t-author">Sneha Patil</span>
-                            <span class="t-region">Maharashtra Mission</span>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!-- Swiper Pagination & Navigation -->
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -591,65 +517,34 @@
         </div>
     </section>
 
-    <!-- MISSIONS / FRONTLINES -->
-    <section id="missions" class="section-padding" style="background: #000;">
-        <div class="section-header">
-            <span class="section-tag">FRONTLINES</span>
-            <h2>MINISTRY DIVISIONS</h2>
-        </div>
-        <div class="bento-grid">
-            <div class="tilt-card span-2" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
-                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1000&q=80');"></div>
-                <div class="card-inner">
-                    <h3 class="card-title">LOST SHEEP MISSION</h3>
-                    <p style="color: #aaa;">Aggressive village evangelism across India.</p>
-                </div>
-            </div>
-            <div class="tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
-                <div class="card-inner">
-                    <i class="fas fa-fire" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px;"></i>
-                    <h3 class="card-title">WAR ROOM</h3>
-                    <span class="card-sub">24/7 INTERCESSION</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BELIEFS SECTION -->
+    <!-- BELIEFS -->
     <section id="beliefs" class="section-padding">
         <div class="section-header">
             <span class="section-tag">FOUNDATION</span>
             <h2>OUR CORE BELIEFS</h2>
         </div>
         <div class="beliefs-grid" data-aos="fade-up">
-            <div class="belief-item"><span class="belief-number"></span> True Repentance</div>
-            <div class="belief-item"><span class="belief-number"></span> Born Again Life</div>
-            <div class="belief-item"><span class="belief-number"></span> Water Baptism</div>
-            <div class="belief-item"><span class="belief-number"></span> One God</div>
-            <div class="belief-item"><span class="belief-number"></span> Father, Son & Spirit</div>
-            <div class="belief-item"><span class="belief-number"></span> Divine Healing</div>
+            <div class="belief-item"><span class="belief-number">01</span> True Repentance</div>
+            <div class="belief-item"><span class="belief-number">02</span> Born Again Life</div>
+            <div class="belief-item"><span class="belief-number">03</span> Water Baptism</div>
+            <div class="belief-item"><span class="belief-number">04</span> One God</div>
+            <div class="belief-item"><span class="belief-number">05</span> Father, Son & Spirit</div>
+            <div class="belief-item"><span class="belief-number">06</span> Divine Healing</div>
         </div>
     </section>
 
-    <!-- CONTACT / FOOTER -->
-    <footer id="contact">
-        <div class="section-header">
-            <span class="section-tag">CONNECT</span>
-            <h2>CONTACT US</h2>
+    <!-- FOOTER -->
+    <footer id="contact" style="padding: 100px 20px; text-align: center; border-top: 1px solid var(--border); position: relative; background: rgba(0,0,0,0.8);">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">JOIN THE ARMY</h2>
+        <p style="color: #888; margin-bottom: 40px;">The harvest is plentiful, but the laborers are few.</p>
+        <a href="mailto:godsoldiersteam@gmail.com" class="btn-brutal">ENLIST NOW</a>
+        
+        <div style="margin-top: 80px; display: flex; justify-content: center; gap: 30px; font-size: 1.5rem; color: var(--gold);">
+            <i class="fab fa-youtube" style="cursor: pointer;"></i>
+            <i class="fab fa-instagram" style="cursor: pointer;"></i>
+            <i class="fab fa-facebook" style="cursor: pointer;"></i>
         </div>
-        <div style="text-align: center;">
-            <p style="font-size: 1.5rem; margin-bottom: 10px; font-weight: 700;">
-                <i class="fas fa-phone" style="color: var(--gold); margin-right: 10px;"></i> +91-8099574874
-            </p>
-            <div class="footer-socials">
-                <i class="fab fa-youtube"></i>
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram"></i>
-            </div>
-            <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.5; letter-spacing: 2px;">
-                © 2026 GOD SOLDIER'S TEAM GLOBAL. POWERED BY FAITH.
-            </p>
-        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #444;">© 2026 GST GLOBAL. DESIGNED WITH GLORY.</p>
     </footer>
 
     <!-- SCRIPTS -->
@@ -660,6 +555,36 @@
             AOS.init({ duration: 1000, once: true });
             initParticles();
             animateParticles();
+
+            // Intersection Observer for Statistics Counter
+            const statsSection = document.getElementById('stats-section');
+            const counters = document.querySelectorAll('.counter');
+            let started = false;
+
+            const countUp = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const speed = target / 100; // Duration divided by steps
+
+                const updateCount = () => {
+                    const current = +counter.innerText;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current + speed);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !started) {
+                    counters.forEach(countUp);
+                    started = true;
+                }
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
 
             // Initialize Testimonials Swiper
             const swiper = new Swiper('.testimonials-swiper', {
@@ -695,7 +620,7 @@
             const x = e.clientX; const y = e.clientY;
             dot.style.transform = `translate(${x}px, ${y}px)`;
             outline.animate({ transform: `translate(${x}px, ${y}px)` }, { duration: 500, fill: "forwards" });
-            if (e.target.closest('a, button, .accordion-header, .tilt-card, i, .close-modal')) {
+            if (e.target.closest('a, button, .tilt-card, i, .close-modal')) {
                 outline.style.width = '70px'; outline.style.height = '70px'; outline.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
             } else {
                 outline.style.width = '40px'; outline.style.height = '40px'; outline.style.backgroundColor = 'transparent';
@@ -710,8 +635,7 @@
             if (floor) floor.style.transform = `perspective(500px) rotateX(70deg) translateY(${window.scrollY * 0.1}px)`;
         });
 
-        // 4. Modal & Accordion
-        function toggleAccordion(header) { const item = header.parentElement; const wasActive = item.classList.contains('active'); document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active')); if (!wasActive) item.classList.add('active'); }
+        // 4. Modal
         function openPage(title, body) { const overlay = document.getElementById('modalOverlay'); document.getElementById('modalTitle').innerText = title; document.getElementById('modalBody').innerText = body; overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = 'auto'; }
         
