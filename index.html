@@ -76,6 +76,10 @@
             z-index: 10000;
             pointer-events: none;
             transition: opacity 0.3s ease;
+            display: none;
+        }
+        @media (min-width: 769px) {
+            .cursor-dot, .cursor-outline { display: block; }
         }
         .cursor-dot { width: 8px; height: 8px; background-color: var(--gold); }
         .cursor-outline {
@@ -154,6 +158,68 @@
 
         .menu-toggle { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
 
+        /* Mobile Nav Overlay */
+        .mobile-nav {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 100%; height: 100vh;
+            background: var(--black);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            transition: 0.5s ease;
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav a { 
+            font-family: 'Cinzel'; 
+            font-size: 1.5rem; 
+            color: white; 
+            text-decoration: none; 
+            text-transform: uppercase;
+        }
+        .close-menu { position: absolute; top: 30px; right: 30px; font-size: 2rem; color: var(--gold); }
+
+        /* --- BUTTONS (Fixed Animation & Shape) --- */
+        .btn-brutal {
+            padding: 15px 35px;
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            display: inline-block;
+            cursor: pointer;
+            z-index: 1;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .btn-brutal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            z-index: -1;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-brutal:hover {
+            color: var(--black) !important;
+            border-color: var(--gold);
+        }
+        .btn-brutal:hover::before {
+            left: 0;
+        }
+
         /* --- SECTIONS --- */
         .section-padding { padding: 100px 20px; max-width: 1400px; margin: 0 auto; }
         .section-header { margin-bottom: 60px; text-align: center; }
@@ -186,11 +252,11 @@
             pointer-events: none;
         }
 
-        /* --- FOUNDER --- */
+        /* --- FOUNDER (Reverted to Previous Centered Style) --- */
         .founder-container { max-width: 900px; margin: 0 auto; text-align: center; }
         .founder-img-wrapper {
             width: 280px; height: 280px; margin: 0 auto 40px; border-radius: 50%; overflow: hidden;
-            border: 4px solid var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            border: 4px solid var(--white); box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
         .founder-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         .founder-title { font-size: 3rem; margin-bottom: 15px; color: var(--white); }
@@ -221,22 +287,14 @@
             gap: 50px;
             padding: 0 20px;
         }
-        
         .t-img-wrapper {
             width: 250px; height: 250px; border-radius: 50%; overflow: hidden;
             flex-shrink: 0; border: none; background: #e0f0ef;
         }
         .t-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        
         .t-content { position: relative; text-align: left; }
-        .t-content .fa-quote-left { 
-            position: absolute; top: -10px; left: -40px; 
-            font-size: 1.5rem; color: #000; opacity: 1; 
-        }
-        .t-content .fa-quote-right {
-            position: absolute; bottom: 60px; right: -20px;
-            font-size: 1.5rem; color: #000; opacity: 1;
-        }
+        .t-content .fa-quote-left { position: absolute; top: -10px; left: -40px; font-size: 1.5rem; color: #000; opacity: 1; }
+        .t-content .fa-quote-right { position: absolute; bottom: 60px; right: -20px; font-size: 1.5rem; color: #000; opacity: 1; }
         .t-text { font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 25px; }
         .t-author { font-weight: 800; color: #000; font-size: 1.2rem; display: block; border-top: 3px solid #6b1d4f; padding-top: 10px; width: fit-content; }
         .t-region { color: #555; font-size: 0.8rem; font-style: italic; }
@@ -245,7 +303,7 @@
         .swiper-pagination-bullet { background: #444 !important; opacity: 1; }
         .swiper-pagination-bullet-active { background: #6b1d4f !important; width: 25px !important; border-radius: 5px !important; }
 
-        /* --- BENTO SYSTEM --- */
+        /* --- BENTO SYSTEM (MISSIONS) --- */
         .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 320px; gap: 20px; }
         .tilt-card {
             background: #0a0a0a; border: 1px solid var(--border); border-radius: 24px; position: relative;
@@ -255,6 +313,25 @@
         .card-inner { width: 100%; height: 100%; padding: 35px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); position: relative; z-index: 2; }
         .card-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.4; transition: 0.6s; }
         .tilt-card:hover .card-bg { transform: scale(1.1); opacity: 0.2; }
+        
+        .card-inner h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .card-inner p { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; }
+
+        /* Gallery Button */
+        .btn-gallery {
+            padding: 8px 15px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Cinzel';
+            text-decoration: none;
+            width: fit-content;
+            transition: 0.3s;
+        }
+        .btn-gallery:hover { background: var(--gold); color: black; }
 
         /* --- BRUTALIST STATS --- */
         .stats-grid {
@@ -289,21 +366,18 @@
         .belief-item:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
         .belief-number { color: var(--gold); font-weight: 900; font-family: 'Cinzel'; }
 
-        /* --- BUTTONS --- */
-        .btn-brutal, .btn-know-more {
-            padding: 15px 35px; background: transparent; border: 1px solid var(--white); color: var(--white);
-            font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; position: relative;
-            overflow: hidden; transition: 0.4s; text-decoration: none; display: inline-block; margin-top: 10px; font-size: 0.8rem;
-        }
-        .btn-brutal:hover { color: var(--black); border-color: var(--gold); transform: translateY(-3px); }
-        .btn-brutal::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--gold); z-index: -1; transition: 0.4s; }
-        .btn-brutal:hover::before { width: 100%; }
-
         /* --- MODAL --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #0a0a0a; border: 1px solid var(--gold); padding: 50px; max-width: 600px; width: 100%; border-radius: 30px; position: relative; text-align: center; transform: translateY(20px); transition: 0.4s; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 3000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #0a0a0a; border: 1px solid var(--gold); padding: 50px; max-width: 800px; width: 100%; border-radius: 30px; position: relative; text-align: center; transform: translateY(20px); transition: 0.4s; }
         .modal-overlay.active { display: flex; }
         .close-modal { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--gold); cursor: pointer; }
+
+        /* --- ARTS HUB & CONNECT --- */
+        .hub-row { display: flex; gap: 50px; align-items: center; margin-bottom: 80px; }
+        .hub-content { flex: 1; }
+        .hub-img-container { flex: 1; border-radius: 30px; overflow: hidden; border: 1px solid var(--border); position: relative; }
+        .hub-img-container img { width: 100%; display: block; filter: grayscale(50%); transition: 0.5s; }
+        .hub-img-container:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
@@ -312,12 +386,15 @@
             .testimonial-slide { flex-direction: column; text-align: center; padding: 0 40px; }
             .t-content .fa-quote-left, .t-content .fa-quote-right { display: none; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hub-row { flex-direction: column; text-align: center; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .menu-toggle { display: block; }
             .section-padding { padding: 60px 20px; }
             .t-img-wrapper { width: 180px; height: 180px; }
+            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 280px; }
+            .display-text { font-size: 3rem; }
         }
     </style>
 </head>
@@ -331,6 +408,19 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <!-- MOBILE NAVIGATION OVERLAY -->
+    <div class="mobile-nav" id="mobileNav">
+        <span class="close-menu" id="closeMenu">&times;</span>
+        <a href="#home">Home</a>
+        <a href="#story">Our Story</a>
+        <a href="#founder">Our Founder</a>
+        <a href="#leaders">Missions Leaders</a>
+        <a href="#missions">Missions</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#school">Disciple School</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
@@ -343,14 +433,14 @@
     <!-- NAVIGATION -->
     <nav id="navbar">
         <a href="#" class="logo">GOD SOLDIERS TEAM <span>GLOBAL</span></a>
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#story">Our Story</a>
             <a href="#founder">Our Founder</a>
-            <a href="#leaders">Missions Leaders</a>
-            <a href="#testimonials">Soldier's Testimonials</a>
-            <a href="#school">Jesus Disciple School</a>
+            <a href="#leaders">Leaders</a>
             <a href="#missions">Missions</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#school">Disciple School</a>
             <a href="#beliefs">Beliefs</a>
             <a href="#contact">Contact</a>
         </div>
@@ -366,31 +456,31 @@
             <p style="letter-spacing: 6px; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; font-weight: 800; font-size: 0.8rem;">Est. 2009 • Apostolic Mission</p>
             <h1 class="display-text">THE WORLD<br>SHALL BE <span class="gold-gradient-text">SAVED</span></h1>
             <p style="max-width: 650px; margin: 0 auto 40px; color: #aaa; font-size: 1.1rem;">We are the Soldiers of the Cross. A generation rising to fulfill the Great Commission with power and fire.</p>
-            <a href="#contact" class="btn-brutal">Enlist as a Soldier</a>
+            <a href="#contact" class="btn-brutal">JOIN THE ARMY</a>
         </div>
     </header>
 
-    <!-- BRUTALIST STATS -->
-    <section class="stats-grid">
+    <!-- STATS (ANIMATED COUNTER) -->
+    <section class="stats-grid" id="stats-section">
         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="stat-number">25+</div>
-            <div class="section-tag">States Reached</div>
+            <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">States Reached</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="stat-number">3K</div>
-            <div class="section-tag">Souls/Meeting</div>
+            <div class="stat-number"><span class="counter" data-target="3000">0</span></div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">Souls/Meeting</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="stat-number">12</div>
-            <div class="section-tag">Ministries</div>
+            <div class="stat-number"><span class="counter" data-target="12">0</span></div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">Ministries</div>
         </div>
         <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
             <div class="stat-number">24/7</div>
-            <div class="section-tag">War Room</div>
+            <div class="section-tag" style="font-weight: 800; letter-spacing: 2px; color: var(--gold);">War Room</div>
         </div>
     </section>
 
-        <!-- STORY SECTION -->
+    <!-- STORY SECTION -->
     <section id="story" class="section-padding">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center;">
             <div data-aos="fade-right">
@@ -400,12 +490,31 @@
                     In 2009, a missionary in South India cried out to God after walking all day to preach to only five people. That night, a vision shook his world. The Holy Spirit whispered: <strong>"The World Shall Be Saved."</strong> 
                     Today, GST Global is a fire burning across nations.
                 </p>
-                <a href="#leaders" class="btn-brutal">Meet The General</a>
             </div>
             <div data-aos="zoom-in" style="position: relative;">
                 <div style="border: 1px solid var(--gold); border-radius: 30px; padding: 15px; transform: rotate(2deg);">
                     <img src="https://images.unsplash.com/photo-1509024644558-2f56ce76c490?auto=format&fit=crop&w=800&q=80" alt="Crusade" style="width: 100%; border-radius: 20px; display: block;">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION & MISSIONS -->
+    <section id="vision" class="section-padding" style="background: rgba(255,215,0,0.02);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">APOSTOLIC VISION</span>
+            <h2>VISION & MISSIONS</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto;" data-aos="fade-up">
+            <div style="background: var(--glass); padding: 50px; border-radius: 30px; border: 1px solid var(--border); position: relative;">
+                <i class="fas fa-quote-left" style="position: absolute; top: 20px; left: 20px; font-size: 3rem; opacity: 0.1;"></i>
+                <p style="font-size: 1.3rem; font-style: italic; color: #fff; margin-bottom: 30px; text-align: center;">
+                    "I left the 99 and ran after the one—the lost one is you, Daniel. I have saved you, and in the same way, you must save the lost souls."
+                </p>
+                <p style="color: #aaa; text-align: center;">
+                    One night, he had a dream where he heard the voice of the Holy Spirit saying, "The world SHALL be saved." He awoke with his heart pounding. That dream marked the beginning of the ministry called GOD SOLDIERS TEAM GLOBAL. Today, we witness over 1,000 people make decisions for Christ in single services and up to 3,000 over the course of a meeting.
+                </p>
             </div>
         </div>
     </section>
@@ -419,41 +528,51 @@
             <h2 class="founder-title">Our Founder</h2>
             <div class="divider-gold"></div>
             <p class="founder-description">
-                K.Daniel is the founder of GOD SOLDIERS TEAM GLOBAL. He is an evangelist who has spent most of his ministry preaching the gospel in more than 25 states in India and globally. As a missionary, Daniel has led thousands of people to Christ face-to-face through open-air evangelistic campaigns in some of the most dangerous and remote locations on earth.
+                K.Daniel is the founder of GOD SOLDIERS TEAM GLOBAL. He is an evangelist who has spent most of his ministry preaching the gospel in more than 25 states in India and globally. As a missionary, Daniel has led thousands of people to Christ face-to-face through open-air evangelistic campaigns.
             </p>
             <p class="founder-quote">
-                “God is working to create a community of redeemed people from every tribe, tongue and nation for his glory. This will help you better understand of God's mission (missio-Dei) and the vital role of Christ Followers is called to play in advancing his kingdom.”
+                “God is working to create a community of redeemed people from every tribe, tongue and nation for his glory. This will help you better understand God's mission (missio-Dei) and the vital role of Christ Followers.”
             </p>
         </div>
     </section>
+
 
     <!-- LEADERS -->
     <section id="leaders" class="section-padding">
         <div class="section-header" data-aos="fade-up">
             <span class="section-tag">COMMANDERS</span>
-            <h2 style="font-size: 2.5rem;">MISSIONS LEADERS</h2>
+            <h2>MISSIONS LEADERS</h2>
             <div class="divider-gold"></div>
         </div>
         
         <div class="leaders-list">
+            <!-- Leader 1 -->
             <div class="leader-row" data-aos="fade-left">
-                <div class="leader-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Ps. Arvind"></div>
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Ps. Arvind">
+                </div>
                 <div class="leader-info">
                     <h3>Ps. Arvind Kumar Singh</h3>
                     <span class="subtitle">(Missions Leader - North India Team)</span>
-                    <p>Overseeing हिमाचल, उत्तराखंड, पंजाब, हरियाणा, राजस्थान, यूपी, एमपी, छत्तीसगढ़, गुजरात, महाराष्ट्र, बिहार और झारखंड.</p>
+                    <p>Overseeing Himachal, Uttarakhand, Punjab, Haryana, Rajasthan, UP, MP, Chhattisgarh, Gujarat, Maharashtra, Bihar and Jharkhand.</p>
                 </div>
             </div>
+            <!-- Leader 2 -->
             <div class="leader-row" data-aos="fade-right">
-                <div class="leader-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="Ps. Israel"></div>
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="Ps. Israel">
+                </div>
                 <div class="leader-info">
                     <h3>Ps. Israel Sagar</h3>
                     <span class="subtitle">(Missions Leader - North-East Part India)</span>
                     <p>North-East includes states of Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura and Sikkim.</p>
                 </div>
             </div>
+            <!-- Leader 3 -->
             <div class="leader-row" data-aos="fade-left">
-                <div class="leader-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80" alt="Bro. Vijay"></div>
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80" alt="Bro. Vijay">
+                </div>
                 <div class="leader-info">
                     <h3>Bro. G Vijay Ashish</h3>
                     <span class="subtitle">(Missions Leader - Southern Part India)</span>
@@ -463,18 +582,85 @@
         </div>
     </section>
 
+    <!-- MISSIONS -->
+    <section id="missions" class="section-padding">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">GLOBAL DEPLOYMENT</span>
+            <h2>OUR MISSIONS</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="bento-grid">
+            <div class="tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="card-inner">
+                    <h3>Village Missions</h3>
+                    <p>Reaching the unreached in remote rural areas with the love of Christ.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Village Missions')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="tilt-card" style="grid-column: span 2;" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80');"></div>
+                <div class="card-inner">
+                    <h3>Youth Revival</h3>
+                    <p>Sparking a fire in the new generation to live for higher purposes.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Youth Revival')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="tilt-card" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="card-inner">
+                    <h3>Charity Works</h3>
+                    <p>Providing food, clothing, and education to the least of these.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Charity Works')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="tilt-card" style="grid-column: span 2;" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1469571483359-0a693633519c?auto=format&fit=crop&w=1200&q=80');"></div>
+                <div class="card-inner">
+                    <h3>Prison Ministry</h3>
+                    <p>Bringing hope and transformation to those behind bars.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Prison Ministry')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="tilt-card" style="grid-column: span 2;" onmousemove="handleTilt(event, this)" onmouseleave="resetTilt(this)">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&w=1200&q=80');"></div>
+                <div class="card-inner">
+                    <h3>School of Ministry</h3>
+                    <p>Equipping laborers for the harvest fields through deep discipleship.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('School of Ministry')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- SOLDIER'S TESTIMONIALS SLIDER -->
+    <!-- JESUS CULTURE & ARTS HUB -->
+    <section id="arts" class="section-padding" style="background: rgba(0,0,0,0.3);">
+        <div class="hub-row">
+            <div class="hub-content" data-aos="fade-right">
+                <span class="section-tag">KINGDOM CREATIVITY</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">JESUS CULTURE & ARTS HUB</h2>
+                <div class="divider-gold" style="margin-left: 0;"></div>
+                <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 30px;">
+                    Enrol, Equip, Encourage. Offer your God-given talents back to Him. Whether it's music, leadership, preaching, or art—use it for His glory.
+                </p>
+                <a href="javascript:void(0)" onclick="openArtsHub()" class="btn-brutal">Enter the Hub</a>
+            </div>
+            <div class="hub-img-container" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1514525253361-bee8a187449b?auto=format&fit=crop&w=800&q=80" alt="Arts Hub">
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials-section">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">VOICES FROM THE FRONT</span>
-            <h2 style="font-size: 2.5rem;">SOLDIER'S TESTIMONIALS</h2>
+            <span class="section-tag">VOICES OF THE SOLDIER'S</span>
+            <h2>SOLDIER'S TESTIMONIALS</h2>
             <div class="divider-gold"></div>
         </div>
 
         <div class="swiper testimonials-swiper">
             <div class="swiper-wrapper">
-                <!-- Testimonial 1 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
@@ -482,14 +668,12 @@
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I am Srimati Anicha Churin. In 2022, I met Pastor Israel Sagar when he preached at our church. Through Ecclesiastes 11:9-10, my life was transformed. I joined the ministry, letting go of many mistakes and sins. I am grateful to Almighty God, through whom my life has changed.</p>
+                            <p class="t-text">I am Srimati Anicha Churin. In 2022, I met Pastor Israel Sagar. Through Ecclesiastes 11:9-10, my life was transformed. I joined the ministry, letting go of many mistakes. I am grateful to Almighty God.</p>
                             <span class="t-author">Srimati Anicha Churin</span>
                             <span class="t-region">North-East Missions Team</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 2 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
@@ -497,14 +681,12 @@
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I was lost in addiction and darkness until GST Global visited my village. The power of the Cross broke my chains in one meeting. Today, I am a frontline soldier preaching the same freedom to others in the villages of Bihar.</p>
+                            <p class="t-text">I was lost in addiction until GST Global visited my village. The power of the Cross broke my chains in one meeting. Today, I am a frontline soldier preaching the same freedom.</p>
                             <span class="t-author">Samuel Raj</span>
                             <span class="t-region">North India Team</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 3 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
@@ -512,122 +694,73 @@
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Serving in the War Room has taught me the power of intercession. We have seen literal miracles—cancers healed and families restored—just by standing in the gap for the world. GST is truly an army of God.</p>
+                            <p class="t-text">Serving in the War Room has taught me the power of intercession. We have seen literal miracles—cancers healed and families restored—just by standing in the gap.</p>
                             <span class="t-author">Mary Kutty</span>
                             <span class="t-region">South India Prayer Division</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 4 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Soldier 4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Soldier 4">
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I joined the Lost Sheep Mission and my perspective on life shifted. Seeing the faces of people who have never heard the name of Jesus brings a fire that nothing can quench. The world shall be saved!</p>
-                            <span class="t-author">Ps. Rahul Sharma</span>
-                            <span class="t-region">Himachal Missions</span>
+                            <p class="t-text">GST Global has given me a new lens through which to see the world. It is not just about religion; it's about a living fire and the salvation of souls.</p>
+                            <span class="t-author">Ps. Arjun K.</span>
+                            <span class="t-region">Uttarakhand Mission Team</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 5 -->
                 <div class="swiper-slide">
                     <div class="testimonial-slide">
                         <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Soldier 5">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Soldier 5">
                         </div>
                         <div class="t-content">
                             <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Disciple School was the most intense 3 months of my life. It stripped away my ego and filled me with a passion for souls. I am now sent out, and the Lord is working signs and wonders through our team.</p>
-                            <span class="t-author">Priya Das</span>
-                            <span class="t-region">Disciple School Alumni</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 6 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80" alt="Soldier 6">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">God Soldier's Team is not just an organization; it's a family of warriors. The unity we have while preaching in remote jungles of Chhattisgarh is supernatural. No weapon formed against us prospers.</p>
-                            <span class="t-author">Amit Singh</span>
-                            <span class="t-region">Frontline Evangelist</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 7 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Soldier 7">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">My family was on the brink of collapse due to sickness. After the GST team prayed for us, a miracle happened overnight. Now my entire family serves the Lord. This movement brings life wherever it goes.</p>
-                            <span class="t-author">Esther Rani</span>
-                            <span class="t-region">Andhra Pradesh</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 8 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=400&q=80" alt="Soldier 8">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">Preaching in prisons has shown me that no one is beyond God's reach. We see hard-hearted criminals weeping at the foot of the Cross. This is the true Gospel of power that K. Daniel taught us.</p>
-                            <span class="t-author">Joseph Abraham</span>
-                            <span class="t-region">Hope Mission (Prison Ministry)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 9 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=400&q=80" alt="Soldier 9">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">I witnessed a whole village in Odisha renounce idols and embrace Jesus in a single weekend. The harvest is truly plentiful! GST provides the training and the spirit to reap this harvest.</p>
-                            <span class="t-author">David Kumar</span>
-                            <span class="t-region">Odisha Missions Team</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 10 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-slide">
-                        <div class="t-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" alt="Soldier 10">
-                        </div>
-                        <div class="t-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="t-text">The fire of the Holy Spirit is real. I felt it the first time I joined the GST global prayer call. It changed my cold heart into a burning torch for my neighbors. We are taking the world for Jesus!</p>
-                            <span class="t-author">Sneha Patil</span>
-                            <span class="t-region">Maharashtra Mission</span>
+                            <p class="t-text">Seeing thousands set free during the crusades is something I'll never forget. This is the true Great Commission in action.</p>
+                            <span class="t-author">Sister Priya</span>
+                            <span class="t-region">Missions Logistics</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Swiper Pagination & Navigation -->
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- CONNECT GROUPS -->
+    <section id="connect" class="section-padding">
+        <div class="hub-row" style="flex-direction: row-reverse;">
+            <div class="hub-content" data-aos="fade-left">
+                <span class="section-tag">COMMUNITY</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">CONNECT GROUPS</h2>
+                <div class="divider-gold" style="margin-left: 0;"></div>
+                <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 30px;">
+                    Our small groups meet across the region in homes, cafes, and parks. They focus on community and spiritual development.
+                </p>
+                <a href="#contact" class="btn-brutal">Connect with Us</a>
+            </div>
+            <div class="hub-img-container" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Connect Groups">
+            </div>
+        </div>
+    </section>
+
+    <!-- OUTREACH MISSION (BOOTCAMP) -->
+    <section id="bootcamp" class="section-padding" style="text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80'); background-size: cover;">
+        <div data-aos="fade-up">
+            <span class="section-tag">EVANGELISM BOOTCAMP</span>
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">OUTREACH MISSION</h2>
+            <div class="divider-gold"></div>
+            <p style="max-width: 800px; margin: 0 auto 40px; color: #ccc; font-size: 1.1rem;">
+                We have an Evangelism Bootcamp where we train what we believe are the most effective evangelists in the world. Enrol today and carry the fire.
+            </p>
+            <a href="#contact" class="btn-brutal">Enrol in Bootcamp</a>
         </div>
     </section>
 
@@ -638,7 +771,7 @@
             <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px;">JESUS DISCIPLE SCHOOL</h2>
             <p style="max-width: 700px; margin: 0 auto 40px; color: #ccc;">Training men and women to become spiritual warriors. Learn to walk in the Word and carry the fire.</p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="javascript:void(0)" onclick="openPage('Disciple School', 'Intense training in scriptural authority and frontline ministry.')" class="btn-brutal">Program Info</a>
+                <a href="javascript:void(0)" onclick="openPage('Disciple School', 'Our program is designed to strip away the distractions of the world and build a solid foundation of faith. We offer 3-month intensive training sessions covering theology, apologetics, and practical evangelism.')" class="btn-brutal">Program Info</a>
             </div>
         </div>
     </section>
@@ -648,6 +781,7 @@
         <div class="section-header">
             <span class="section-tag">FOUNDATION</span>
             <h2>OUR CORE BELIEFS</h2>
+            <div class="divider-gold"></div>
         </div>
         <div class="beliefs-grid" data-aos="fade-up">
             <div class="belief-item"><span class="belief-number">01</span> True Repentance</div>
@@ -663,7 +797,7 @@
     <footer id="contact" style="padding: 100px 20px; text-align: center; border-top: 1px solid var(--border); position: relative; background: rgba(0,0,0,0.8);">
         <h2 style="font-size: 3rem; margin-bottom: 20px;">JOIN THE ARMY</h2>
         <p style="color: #888; margin-bottom: 40px;">The harvest is plentiful, but the laborers are few.</p>
-        <a href="mailto:godsoldiersteam@gmail.com" class="btn-brutal">ENLIST NOW</a>
+        <a href="mailto:godsoldiersteam@gmail.com" class="btn-brutal">Enlist Now</a>
         
         <div style="margin-top: 80px; display: flex; justify-content: center; gap: 30px; font-size: 1.5rem; color: var(--gold);">
             <i class="fab fa-youtube" style="cursor: pointer;"></i>
@@ -677,25 +811,29 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Global mouse coordinates for particle interaction
+        let mouseX = 0;
+        let mouseY = 0;
+
         window.onload = function() {
             AOS.init({ duration: 1000, once: true });
             initParticles();
             animateParticles();
 
-            // Intersection Observer for Statistics Counter
+            // Statistics Counter Logic
             const statsSection = document.getElementById('stats-section');
             const counters = document.querySelectorAll('.counter');
-            let started = false;
 
             const countUp = (counter) => {
+                counter.innerText = '0';
                 const target = +counter.getAttribute('data-target');
-                const speed = target / 100; // Duration divided by steps
+                const speed = target / 50; 
 
                 const updateCount = () => {
                     const current = +counter.innerText;
                     if (current < target) {
                         counter.innerText = Math.ceil(current + speed);
-                        setTimeout(updateCount, 20);
+                        setTimeout(updateCount, 40);
                     } else {
                         counter.innerText = target;
                     }
@@ -704,16 +842,19 @@
             };
 
             const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !started) {
-                    counters.forEach(countUp);
-                    started = true;
-                }
-            }, { threshold: 0.5 });
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(countUp);
+                    } else {
+                        counters.forEach(c => c.innerText = '0');
+                    }
+                });
+            }, { threshold: 0.3 });
 
-            observer.observe(statsSection);
+            if(statsSection) observer.observe(statsSection);
 
             // Initialize Testimonials Swiper
-            const swiper = new Swiper('.testimonials-swiper', {
+            new Swiper('.testimonials-swiper', {
                 loop: true,
                 speed: 800,
                 autoplay: { delay: 5000, disableOnInteraction: false },
@@ -721,55 +862,180 @@
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
                 grabCursor: true,
             });
+
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const closeMenu = document.getElementById('closeMenu');
+
+            menuToggle.addEventListener('click', () => mobileNav.classList.add('active'));
+            closeMenu.addEventListener('click', () => mobileNav.classList.remove('active'));
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileNav.classList.remove('active'));
+            });
         };
 
-        // 1. Particle System
+        // 1. Particle System with High Mouse Sensitivity
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize); resize();
+        
+        function resize() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
+        window.addEventListener('resize', resize); 
+        resize();
 
         class Particle {
-            constructor() { this.reset(); }
-            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.1; this.speedX = (Math.random() - 0.5) * 0.3; this.speedY = (Math.random() - 0.5) * 0.3; this.color = Math.random() > 0.8 ? '#FFD700' : '#444'; }
-            update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
-            draw() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill(); }
-        }
-        function initParticles() { particles = []; const count = window.innerWidth < 768 ? 40 : 100; for(let i=0; i<count; i++) particles.push(new Particle()); }
-        function animateParticles() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
+            constructor() { 
+                this.reset(); 
+            }
+            reset() { 
+                this.x = Math.random() * canvas.width; 
+                this.y = Math.random() * canvas.height; 
+                this.size = Math.random() * 2 + 0.1; 
+                this.speedX = (Math.random() - 0.5) * 0.3; 
+                this.speedY = (Math.random() - 0.5) * 0.3; 
+                this.color = Math.random() > 0.8 ? '#FFD700' : '#444'; 
+            }
+            update() { 
+                // Basic floating movement
+                this.x += this.speedX; 
+                this.y += this.speedY; 
 
-        // 2. Custom Cursor
+                // --- MOUSE INTERACTION (HIGH SENSITIVITY) ---
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const forceRadius = 180; // Distance at which mouse starts pushing particles
+
+                if (distance < forceRadius) {
+                    // Calculate repulsion force based on proximity
+                    const force = (forceRadius - distance) / forceRadius;
+                    const directionX = dx / distance;
+                    const directionY = dy / distance;
+                    
+                    // Move the particle away from the mouse
+                    // sensitivity multiplier (12.0) makes them "move here and there" quickly
+                    this.x -= directionX * force * 12.0;
+                    this.y -= directionY * force * 12.0;
+                }
+
+                // Boundary reset
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset(); 
+                }
+            }
+            draw() { 
+                ctx.fillStyle = this.color; 
+                ctx.beginPath(); 
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); 
+                ctx.fill(); 
+            }
+        }
+
+        function initParticles() { 
+            particles = []; 
+            const count = window.innerWidth < 768 ? 40 : 120; 
+            for(let i=0; i<count; i++) particles.push(new Particle()); 
+        }
+
+        function animateParticles() { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            particles.forEach(p => { 
+                p.update(); 
+                p.draw(); 
+            }); 
+            requestAnimationFrame(animateParticles); 
+        }
+
+        // 2. Custom Cursor and Global Mouse Tracker
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
+        
         window.addEventListener('mousemove', (e) => {
-            const x = e.clientX; const y = e.clientY;
-            dot.style.transform = `translate(${x}px, ${y}px)`;
-            outline.animate({ transform: `translate(${x}px, ${y}px)` }, { duration: 500, fill: "forwards" });
-            if (e.target.closest('a, button, .tilt-card, i, .close-modal')) {
-                outline.style.width = '70px'; outline.style.height = '70px'; outline.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
+            // Update global coordinates for particles
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (!dot || !outline) return;
+            
+            // Custom cursor UI
+            dot.style.left = `${mouseX}px`;
+            dot.style.top = `${mouseY}px`;
+            
+            outline.animate({ left: `${mouseX}px`, top: `${mouseY}px` }, { duration: 400, fill: "forwards" });
+            
+            if (e.target.closest('a, button, .tilt-card, i, .close-modal, .mission-card')) {
+                outline.style.width = '70px'; 
+                outline.style.height = '70px'; 
+                outline.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
             } else {
-                outline.style.width = '40px'; outline.style.height = '40px'; outline.style.backgroundColor = 'transparent';
+                outline.style.width = '40px'; 
+                outline.style.height = '40px'; 
+                outline.style.backgroundColor = 'transparent';
             }
         });
 
-        // 3. Navbar & Parallax
+        // 3. Navbar logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            const floor = document.querySelector('.grid-floor');
             if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-            if (floor) floor.style.transform = `perspective(500px) rotateX(70deg) translateY(${window.scrollY * 0.1}px)`;
         });
 
-        // 4. Modal
-        function openPage(title, body) { const overlay = document.getElementById('modalOverlay'); document.getElementById('modalTitle').innerText = title; document.getElementById('modalBody').innerText = body; overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        // 4. Modal Utilities
+        function openPage(title, body) { 
+            const overlay = document.getElementById('modalOverlay'); 
+            document.getElementById('modalTitle').innerText = title; 
+            document.getElementById('modalBody').innerHTML = body; 
+            overlay.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function openArtsHub() {
+            const content = `
+                <p style="margin-bottom: 20px;">Use your God-given talents to Enrol, Equip, and Encourage others for the Kingdom.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: left;">
+                    <div style="padding: 15px; background: #111; border-radius: 10px; border: 1px solid var(--border);">
+                        <h4 style="color: var(--gold);">David</h4>
+                        <p style="font-size: 0.85rem;">Musical Talents</p>
+                    </div>
+                    <div style="padding: 15px; background: #111; border-radius: 10px; border: 1px solid var(--border);">
+                        <h4 style="color: var(--gold);">Joseph</h4>
+                        <p style="font-size: 0.85rem;">Leadership & Wisdom</p>
+                    </div>
+                    <div style="padding: 15px; background: #111; border-radius: 10px; border: 1px solid var(--border);">
+                        <h4 style="color: var(--gold);">Isaiah</h4>
+                        <p style="font-size: 0.85rem;">Evangelism & Preaching</p>
+                    </div>
+                    <div style="padding: 15px; background: #111; border-radius: 10px; border: 1px solid var(--border);">
+                        <h4 style="color: var(--gold);">Bezalel</h4>
+                        <p style="font-size: 0.85rem;">Skilled Craftsman</p>
+                    </div>
+                </div>
+            `;
+            openPage('Jesus Culture & Arts Hub', content);
+        }
+
+        function openGallery(missionName) {
+            const galleryContent = `
+                <p style="margin-bottom: 20px;">Witness the power of God in the ${missionName}.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    <div style="aspect-ratio: 16/9; background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #444;">[Mission Video Placeholder]</div>
+                    <div style="aspect-ratio: 16/9; background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #444;">[Mission Photo Placeholder]</div>
+                </div>
+            `;
+            openPage(`${missionName} Gallery`, galleryContent);
+        }
+
         function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = 'auto'; }
         
         // 5. Card Tilt
         function handleTilt(e, card) {
             const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-            const xRot = -1 * ((y - rect.height/2) / (rect.height/2) * 10);
-            const yRot = (x - rect.width/2) / (rect.width/2) * 10;
+            const xRot = -1 * ((y - rect.height/2) / (rect.height/2) * 15);
+            const yRot = (x - rect.width/2) / (rect.width/2) * 15;
             card.style.transform = `perspective(1000px) rotateX(${xRot}deg) rotateY(${yRot}deg) scale(1.02)`;
         }
         function resetTilt(card) { card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`; }
