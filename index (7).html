@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOD SOLDIERS TEAM GLOBAL | The World Shall Be Saved</title>
+    
+    <!-- SEO & SOCIAL SHARING -->
+    <meta name="description" content="GST Global: A generation rising to fulfill the Great Commission with power and fire. Apostolic Mission established in 2009.">
+    <meta property="og:title" content="GOD SOLDIERS TEAM GLOBAL">
+    <meta property="og:description" content="The World Shall Be Saved. Join the Apostolic movement today.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509024644558-2f56ce76c490?w=1200">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- External Assets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --gold: #FFD700; 
+            --gold-dark: #b8860b;
+            --gold-light: #FFE55C;
+            --black: #050505;
+            --void: #000000;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(255, 215, 0, 0.3);
+            
+            /* Spacing Scale */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 2rem;
+            --text-4xl: 2.5rem;
+            --text-5xl: 3.5rem;
+            --text-6xl: 5rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @media (min-width: 769px) {
+            * { cursor: none !important; }
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-size: var(--text-base);
+        }
+
+        /* ===== LOADING SCREEN ===== */
+        #loading-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--void);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+        }
+        
+        .loading-logo span {
+            color: var(--gold);
+        }
+        
+        .loading-bar-container {
+            width: 300px;
+            height: 3px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            background-size: 200% 100%;
+            animation: loadingProgress 2s ease-out forwards, shimmer 1s linear infinite;
+            box-shadow: 0 0 20px var(--gold);
+        }
+        
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .loading-text {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ADVANCED BACKGROUNDS ===== */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* ===== SCROLL PROGRESS BAR ===== */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            width: 0%; height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: 10001;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold);
+        }
+
+        /* ===== CUSTOM CURSOR ===== */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+            display: none;
+        }
+        @media (min-width: 769px) { .cursor-dot, .cursor-outline { display: block; } }
+        
+        .cursor-dot { 
+            width: 8px; height: 8px; 
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
+        }
+        
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 2px solid var(--gold);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cursor-outline.hover {
+            width: 60px; height: 60px;
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--gold-light);
+        }
+
+        /* ===== FLOATING PARTICLES ===== */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.8; }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 { 
+            font-family: 'Cinzel', serif; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+
+        /* Glitch Text Effect */
+        .glitch-text {
+            position: relative;
+        }
+        
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+        
+        .glitch-text::before {
+            animation: glitch-1 2s infinite linear alternate-reverse;
+            color: #ff0000;
+            z-index: -1;
+        }
+        
+        .glitch-text::after {
+            animation: glitch-2 3s infinite linear alternate-reverse;
+            color: #00ffff;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, -2px); }
+            20% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 2px); }
+            40% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 2px); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, 2px); }
+            20% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, -2px); }
+            40% { clip-path: inset(5% 0 80% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+            80% { clip-path: inset(30% 0 50% 0); transform: translate(2px, -2px); }
+        }
+
+        .display-text {
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 0.95;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff 40%, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-md);
+        }
+
+        /* Animated Gold Gradient */
+        .gold-gradient-text {
+            background: linear-gradient(45deg, var(--gold), #fff, var(--gold-dark), var(--gold));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShine 3s ease infinite;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes goldShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Neon Glow Text */
+        .neon-text {
+            text-shadow: 
+                0 0 5px var(--gold),
+                0 0 10px var(--gold),
+                0 0 20px var(--gold),
+                0 0 40px var(--gold),
+                0 0 80px var(--gold);
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1400px;
+            padding: var(--space-sm) var(--space-lg);
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            top: 0; width: 100%; border-radius: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--gold-dark);
+            padding: var(--space-sm) var(--space-xl);
+            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .logo { 
+            font-size: var(--text-base); 
+            font-weight: 900; 
+            color: var(--white); 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .logo:hover {
+            text-shadow: 0 0 20px var(--gold);
+        }
+        
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: var(--space-xs); }
+        
+        .nav-links a { 
+            color: rgba(255,255,255,0.8); 
+            font-size: var(--text-xs); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: var(--gold); 
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Gallery Link in Nav */
+        .nav-links a.gallery-link {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(184, 134, 11, 0.2));
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+        
+        .nav-links a.gallery-link:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--black);
+        }
+
+        #menuToggle {
+            color: var(--gold); 
+            font-size: var(--text-xl); 
+            cursor: pointer; 
+            display: none;
+            padding: var(--space-xs);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section-padding { 
+            padding: var(--space-3xl) var(--space-lg); 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        
+        .section-header { 
+            margin-bottom: var(--space-xl); 
+            text-align: center; 
+        }
+        
+        .section-tag { 
+            color: var(--gold); 
+            font-weight: 800; 
+            letter-spacing: 5px; 
+            font-size: var(--text-xs); 
+            margin-bottom: var(--space-sm); 
+            display: block; 
+            text-transform: uppercase;
+        }
+        
+        .divider-gold { 
+            width: 80px; 
+            height: 3px; 
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: var(--space-md) auto var(--space-xl);
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: var(--space-2xl);
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.08), transparent);
+            pointer-events: none;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* ===== 3D TILT CARDS ===== */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s;
+        }
+        
+        .tilt-card-inner {
+            transform: translateZ(20px);
+        }
+
+        /* ===== MAGNETIC BUTTONS ===== */
+        .btn-magnetic-wrap { 
+            display: inline-block; 
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .btn-brutal {
+            padding: var(--space-sm) var(--space-xl);
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            display: inline-block;
+            cursor: pointer;
+            z-index: 1;
+            font-size: var(--text-sm);
+            text-decoration: none;
+            border-radius: 4px;
+            min-width: 180px;
+            text-align: center;
+        }
+        
+        .btn-brutal::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: -1;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-brutal:hover { 
+            color: var(--black) !important; 
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn-brutal:hover::before { left: 0; }
+
+        /* Glowing Button */
+        .btn-glow {
+            animation: btnGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes btnGlow {
+            from { box-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold); }
+            to { box-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold), 0 0 60px var(--gold); }
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(184, 134, 11, 0.9));
+            border: 2px solid var(--gold);
+            color: var(--black);
+            padding: var(--space-sm) var(--space-xl);
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: var(--text-sm);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-whatsapp::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .btn-whatsapp:hover::after {
+            left: 100%;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.6), 0 0 80px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: var(--space-xl);
+        }
+        
+        .grid-floor {
+            position: absolute;
+            bottom: -30%; left: -50%;
+            width: 200%; height: 100%;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: perspective(500px) rotateX(75deg);
+            opacity: 0.1;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+        }
+
+        .hero-subtitle {
+            letter-spacing: 6px; 
+            color: var(--gold); 
+            margin-bottom: var(--space-lg); 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            font-size: var(--text-sm); 
+            font-family: 'Cinzel', serif;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-description {
+            max-width: 700px; 
+            margin: 0 auto var(--space-xl); 
+            color: #bbb; 
+            font-size: var(--text-lg); 
+            font-weight: 400;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            border-top: 1px solid var(--border); 
+            border-bottom: 1px solid var(--border); 
+            background: rgba(0,0,0,0.5); 
+        }
+        
+        .stat-item { 
+            padding: var(--space-2xl) var(--space-md); 
+            text-align: center; 
+            border-right: 1px solid var(--border); 
+            transition: all 0.4s; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-item:last-child { border-right: none; }
+        
+        .stat-item:hover {
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number { 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            font-weight: 900; 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .stat-label {
+            color: var(--gold); 
+            letter-spacing: 3px; 
+            font-size: var(--text-xs); 
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ===== COUNSELLING SECTION ===== */
+        .counselling-icons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        
+        .counselling-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            color: #aaa;
+            font-size: var(--text-sm);
+            transition: all 0.3s;
+            padding: var(--space-md);
+            border-radius: 15px;
+        }
+        
+        .counselling-icon:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .counselling-icon i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .counselling-icon:hover i {
+            transform: scale(1.2);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ===== FOUNDER ===== */
+        .founder-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        
+        .founder-img-wrapper {
+            width: 300px; 
+            height: 300px; 
+            margin: 0 auto var(--space-xl); 
+            border-radius: 50%; 
+            overflow: hidden;
+            border: 4px solid var(--white); 
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .founder-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: pulseRing 2s ease-out infinite;
+        }
+        
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0; }
+        }
+        
+        .founder-img-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 215, 0, 0.3);
+        }
+        
+        .founder-img-wrapper img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        
+        .founder-quote {
+            margin-top: var(--space-xl); 
+            font-style: italic; 
+            color: var(--gold); 
+            font-size: var(--text-xl);
+            padding: var(--space-lg);
+            border-left: 3px solid var(--gold);
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-quote::before {
+            content: '"';
+            position: absolute;
+            top: -20px; left: 10px;
+            font-size: 6rem;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: serif;
+        }
+
+        /* ===== LEADERS ===== */
+        .leaders-list { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: var(--space-xl); 
+        }
+        
+        .leader-row {
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-xl); 
+            background: rgba(255,255,255,0.02); 
+            padding: var(--space-lg);
+            border-radius: 25px; 
+            border: 1px solid var(--border); 
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leader-row::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+            transition: left 0.6s;
+        }
+        
+        .leader-row:hover::before {
+            left: 100%;
+        }
+        
+        .leader-row:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-5px) scale(1.02); 
+            background: rgba(255,215,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+        }
+        
+        .leader-img { 
+            width: 200px; 
+            height: 250px; 
+            flex-shrink: 0; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .leader-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(255, 215, 0, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .leader-row:hover .leader-img::after {
+            opacity: 1;
+        }
+        
+        .leader-row:hover .leader-img {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .leader-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: all 0.4s;
+        }
+        
+        .leader-row:hover .leader-img img {
+            transform: scale(1.1);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section { 
+            overflow: hidden; 
+            padding: var(--space-3xl) 0; 
+            border-top: 1px solid var(--border); 
+        }
+        
+        .testimonial-slide {
+            max-width: 900px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-xl); 
+            padding: 0 var(--space-lg);
+        }
+        
+        .t-img-wrapper {
+            width: 220px; 
+            height: 220px; 
+            border-radius: 50%; 
+            overflow: hidden;
+            flex-shrink: 0; 
+            border: 4px solid var(--gold); 
+            background: #111;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.1);
+            position: relative;
+            animation: testimonialGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes testimonialGlow {
+            from { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+            to { box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 80px rgba(255, 215, 0, 0.3); }
+        }
+        
+        .t-img-wrapper img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        .swiper-pagination-bullet { 
+            width: 12px;
+            height: 12px;
+            background: #555 !important; 
+            opacity: 1; 
+            transition: all 0.3s;
+        }
+        
+        .swiper-pagination-bullet-active { 
+            background: var(--gold) !important;
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        /* ===== MISSIONS GRID ===== */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .mission-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .mission-card:hover::before {
+            opacity: 1;
+        }
+        
+        .mission-card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .mission-img { 
+            height: 220px; 
+            background-size: cover; 
+            background-position: center;
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .mission-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+        
+        .mission-card:hover .mission-img {
+            transform: scale(1.1);
+        }
+
+        .btn-gallery { 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: var(--text-xs); 
+            font-weight: 800; 
+            border: 1px solid var(--gold); 
+            padding: var(--space-xs) var(--space-md); 
+            border-radius: 6px; 
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--gold);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        
+        .btn-gallery:hover::before {
+            left: 0;
+        }
+        
+        .btn-gallery:hover { 
+            color: black;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ===== FEATURED MISSIONS ===== */
+        .featured-mission {
+            background-size: cover;
+            background-position: center;
+            padding: var(--space-3xl) var(--space-xl);
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--space-xl);
+            transition: all 0.4s;
+        }
+        
+        .featured-mission::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            transition: all 0.4s;
+        }
+        
+        .featured-mission:hover::before {
+            background: rgba(0,0,0,0.75);
+        }
+        
+        .featured-mission:hover {
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .featured-mission > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== BLOGS SECTION ===== */
+        .blog-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .blog-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        
+        .blog-card:hover::before {
+            opacity: 1;
+        }
+        
+        .blog-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .blog-card-image {
+            height: 180px;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .blog-card:hover .blog-card-image::after {
+            opacity: 1;
+        }
+        
+        .blog-card-image i {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.5;
+            transition: all 0.4s;
+        }
+        
+        .blog-card:hover .blog-card-image i {
+            opacity: 1;
+            transform: scale(1.2);
+            text-shadow: 0 0 30px var(--gold);
+        }
+
+        .visit-blog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            margin-top: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visit-blog-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .visit-blog-btn:hover::after {
+            left: 100%;
+        }
+        
+        .visit-blog-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ===== BELIEFS ===== */
+        .beliefs-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: var(--space-md); 
+        }
+        
+        .belief-item { 
+            background: var(--glass); 
+            padding: var(--space-lg); 
+            border-radius: 20px; 
+            border: 1px solid var(--border);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            gap: var(--space-sm);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .belief-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .belief-item:hover::before {
+            opacity: 1;
+        }
+        
+        .belief-item:hover { 
+            border-color: var(--gold); 
+            background: rgba(255,215,0,0.08);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .belief-num { 
+            width: 50px; 
+            height: 50px; 
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
+            color: black; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 900;
+            font-size: var(--text-lg);
+            transition: all 0.4s;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .belief-item:hover .belief-num {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item { 
+            background: var(--glass); 
+            border: 1px solid var(--border); 
+            border-radius: 15px; 
+            margin-bottom: var(--space-md); 
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item:hover::before,
+        .faq-item.active::before {
+            transform: scaleY(1);
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .faq-item.active {
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        /* ===== FOOTER ===== */
+        #enlist-footer { 
+            position: relative; 
+            padding: var(--space-3xl) var(--space-lg); 
+            text-align: center; 
+            overflow: hidden; 
+        }
+        
+        .footer-overlay { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); 
+            z-index: 1; 
+        }
+        
+        #footer-video { 
+            position: absolute; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            min-width: 100%; 
+            min-height: 100%; 
+            z-index: 0; 
+            object-fit: cover; 
+        }
+        
+        .social-links {
+            margin-top: var(--space-2xl); 
+            color: var(--gold); 
+            display: flex; 
+            justify-content: center; 
+            gap: var(--space-lg); 
+            font-size: 2rem;
+        }
+        
+        .social-links i {
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .social-links i::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px; height: 50px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .social-links i:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        
+        .social-links i:hover {
+            transform: translateY(-10px) scale(1.2);
+            color: var(--white);
+            text-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            backdrop-filter: blur(15px); 
+            z-index: 3000; 
+            display: none; 
+            justify-content: center; 
+            align-items: center;
+            padding: var(--space-lg);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .modal-overlay.active { 
+            display: flex; 
+            opacity: 1;
+        }
+        
+        .modal-content { 
+            background: #111; 
+            border: 2px solid var(--gold); 
+            padding: var(--space-2xl); 
+            border-radius: 25px; 
+            max-width: 800px; 
+            width: 100%; 
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .close-modal { 
+            position: absolute; 
+            top: var(--space-md); 
+            right: var(--space-md); 
+            font-size: 2rem; 
+            color: var(--gold); 
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-lg);
+            backdrop-filter: blur(20px);
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+            animation: menuSlideIn 0.4s ease-out;
+        }
+        
+        @keyframes menuSlideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-menu a {
+            color: var(--white);
+            font-size: var(--text-2xl);
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .mobile-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .nav-links { gap: var(--space-xs); }
+            .nav-links a { font-size: var(--text-xs); padding: var(--space-xs); }
+            .missions-grid { grid-template-columns: repeat(2, 1fr); }
+            .beliefs-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            #menuToggle { display: block; }
+            .beliefs-grid { grid-template-columns: repeat(2, 1fr); }
+            .leader-row { flex-direction: column; text-align: center; }
+            .leader-img { width: 180px; height: 220px; }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --space-3xl: 4rem;
+                --space-2xl: 3rem;
+            }
+            
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { padding: var(--space-lg) var(--space-sm); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(1), .stat-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+            
+            .display-text { font-size: 2.8rem; }
+            .glass-card { padding: var(--space-xl) var(--space-md); }
+            .missions-grid { grid-template-columns: 1fr; }
+            
+            .testimonial-slide { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: var(--space-lg); 
+            }
+            
+            .t-img-wrapper { width: 160px; height: 160px; }
+            
+            .founder-img-wrapper { width: 220px; height: 220px; }
+            
+            .swiper-button-next, .swiper-button-prev { display: none !important; }
+        }
+        
+        @media (max-width: 480px) {
+            .display-text { font-size: 2.2rem; }
+            .beliefs-grid { grid-template-columns: 1fr; }
+            .belief-item { flex-direction: row; text-align: left; justify-content: flex-start; }
+        }
+
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== PARALLAX ELEMENTS ===== */
+        .parallax {
+            will-change: transform;
+        }
+
+        /* ===== RIPPLE EFFECT ===== */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <div class="loading-logo">GOD SOLDIERS TEAM <span>GLOBAL</span></div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">Loading Experience...</div>
+    </div>
+
+    <!-- FLOATING PARTICLES -->
+    <div class="floating-particles" id="floatingParticles"></div>
+
+    <div id="scroll-progress"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-overlay"></div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" onclick="toggleMobileMenu()" style="position: absolute; top: 2rem; right: 2rem; color: var(--gold); font-size: 2rem; cursor: pointer;"></i>
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#story" onclick="toggleMobileMenu()">Our Story</a>
+        <a href="#vision" onclick="toggleMobileMenu()">Vision</a>
+        <a href="#founder" onclick="toggleMobileMenu()">Founder</a>
+        <a href="#counselling" onclick="toggleMobileMenu()">Counselling</a>
+        <a href="#missions" onclick="toggleMobileMenu()">Missions</a>
+        <a href="#blogs" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="gallery/index.html" onclick="toggleMobileMenu()" style="color: var(--gold);">Gallery</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="logo">GOD SOLDIERS TEAM <span>GLOBAL</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#story">Story</a>
+            <a href="#vision">Vision</a>
+            <a href="#founder">Founder</a>
+            <a href="#counselling">Counselling</a>
+            <a href="#missions">Missions</a>
+            <a href="#blogs">Blogs</a>
+            <a href="gallery/index.html" class="gallery-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div id="menuToggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <div class="grid-floor" id="floor"></div>
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
+            <p class="hero-subtitle neon-text">EST. 2009 • APOSTOLIC MISSION</p>
+            <h1 class="display-text glitch-text" data-text="THE WORLD SHALL BE SAVED">THE WORLD<br>SHALL BE <span class="gold-gradient-text">SAVED</span></h1>
+            <p class="hero-description">We are the Soldiers of the Cross. A generation rising to fulfill the Great Commission with power and fire.</p>
+            
+            <div class="btn-magnetic-wrap">
+                <a href="#contact" class="btn-brutal btn-magnetic btn-glow">JOIN THE ARMY</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats-grid" id="stats-section">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+            <p class="stat-label">States Reached</p>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number"><span class="counter" data-target="3000">0</span></div>
+            <p class="stat-label">Souls / Meeting</p>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-number"><span class="counter" data-target="12">0</span></div>
+            <p class="stat-label">Active Missions</p>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-number neon-text">24/7</div>
+            <p class="stat-label">Prayer Line</p>
+        </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" class="section-padding">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-2xl); align-items: center;">
+            <div data-aos="fade-right">
+                <span class="section-tag">The Genesis</span>
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-family: 'Cinzel'; line-height: 1.2; margin-bottom: var(--space-lg);">"I Left the 99 for the One"</h2>
+                <p style="color: #aaa; font-size: var(--text-lg); margin-bottom: var(--space-md); line-height: 1.9;">
+                    In 2009, a missionary in South India cried out to God after walking all day to preach to only five people. That night, a vision shook his world. The Holy Spirit whispered: <strong style="color: var(--gold);">"The World Shall Be Saved."</strong>
+                </p>
+                <p style="color: #888; font-size: var(--text-base); line-height: 1.8;">
+                    Today, GST Global is a fire burning across nations, reaching the unreached with the uncompromised Gospel of Jesus Christ.
+                </p>
+            </div>
+            <div data-aos="zoom-in" style="position: relative;">
+                <div class="tilt-card" style="border: 2px solid var(--gold); border-radius: 25px; padding: var(--space-sm); transform: rotate(2deg); transition: transform 0.4s;" onmouseover="this.style.transform='rotate(0deg) scale(1.02)'" onmouseout="this.style.transform='rotate(2deg)'">
+                    <img src="https://images.unsplash.com/photo-1484557985045-edf25e08da73?auto=format&fit=crop&w=800&q=80" alt="The Lost Sheep" style="width: 100%; border-radius: 20px; display: block;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION & MISSIONS -->
+    <section id="vision" class="section-padding" style="background: rgba(255,215,0,0.02);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Apostolic Movement</span>
+            <h2>Vision & Missions</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto;" data-aos="fade-up">
+            <div class="glass-card tilt-card">
+                <div class="tilt-card-inner">
+                    <i class="fas fa-quote-left" style="position: absolute; top: var(--space-lg); left: var(--space-lg); font-size: 3rem; opacity: 0.1; color: var(--gold);"></i>
+                    <p style="font-size: var(--text-xl); font-style: italic; color: #fff; margin-bottom: var(--space-lg); text-align: center; line-height: 1.8;">
+                        "I left the 99 and ran after the one—the lost one is you, Daniel. I have saved you, and in the same way, you must save the lost souls."
+                    </p>
+                    <p style="color: #aaa; text-align: center; font-size: var(--text-base); line-height: 1.9;">
+                        This was the message he received in a dream one night, and then he heard the voice of the Holy Spirit say, <strong style="color: var(--gold);">"The world shall be saved."</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNSELLING SECTION -->
+    <section id="counselling" class="section-padding">
+        <div class="featured-mission" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80');" data-aos="fade-up">
+            <span class="section-tag">Need Help?</span>
+            <h2>You're Not Alone</h2>
+            <p>Struggling with suicidal thoughts, anxiety, depression, or any psychological battle? Our trained counsellors are here to listen, pray, and guide you toward hope and healing through Christ.</p>
+
+            <div class="counselling-icons" style="justify-content: center; margin-bottom: var(--space-xl);">
+                <div class="counselling-icon">
+                    <i class="fas fa-heart"></i>
+                    <span>Emotional Support</span>
+                </div>
+                <div class="counselling-icon">
+                    <i class="fas fa-praying-hands"></i>
+                    <span>Prayer & Guidance</span>
+                </div>
+                <div class="counselling-icon">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Confidential</span>
+                </div>
+                <div class="counselling-icon">
+                    <i class="fas fa-clock"></i>
+                    <span>Available 24/7</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/919999999999?text=Hello,%20I%20need%20counselling%20support%20from%20GST%20Global" target="_blank" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                Connect on WhatsApp
+            </a>
+            <p style="margin-top: var(--space-md); color: #aaa; font-size: var(--text-sm);">Your conversation is completely private and confidential</p>
+        </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section id="founder" class="section-padding">
+        <div class="founder-container" data-aos="fade-up">
+            <div class="founder-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="K. Daniel Founder">
+            </div>
+            <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-md);">Our Founder</h2>
+            <div class="divider-gold"></div>
+            <div class="founder-desc">
+                <p>K. Daniel is the founder of GOD SOLDIERS TEAM GLOBAL. He is an evangelist who has spent most of his ministry preaching the gospel in more than 25 states in India and globally. As a missionary, Daniel has led thousands of people to Christ face-to-face through open-air evangelistic campaigns in some of the most dangerous, difficult, and remote locations on earth.</p>
+                <p class="founder-quote">
+                    "God is working to create a community of redeemed people from every tribe, tongue and nation for His glory."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERS -->
+    <section id="leaders" class="section-padding" style="background: rgba(255,215,0,0.01);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Commanders</span>
+            <h2>Missions Leaders</h2>
+            <div class="divider-gold"></div>
+        </div>
+        
+        <div class="leaders-list">
+            <div class="leader-row" data-aos="fade-left">
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Ps. Arvind">
+                </div>
+                <div class="leader-info">
+                    <h3>Ps. Arvind Kumar Singh</h3>
+                    <span class="subtitle">Missions Leader - North India Team</span>
+                    <p>Overseeing Himachal, Uttarakhand, Punjab, Haryana, Rajasthan, UP, MP, Chhattisgarh, Gujarat, Maharashtra, Bihar and Jharkhand.</p>
+                </div>
+            </div>
+            <div class="leader-row" data-aos="fade-right">
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="Ps. Israel">
+                </div>
+                <div class="leader-info">
+                    <h3>Ps. Israel Sagar</h3>
+                    <span class="subtitle">Missions Leader - North-East India</span>
+                    <p>North-East includes states of Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura and Sikkim.</p>
+                </div>
+            </div>
+            <div class="leader-row" data-aos="fade-left">
+                <div class="leader-img">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80" alt="Bro. Vijay">
+                </div>
+                <div class="leader-info">
+                    <h3>Bro. G Vijay Ashish</h3>
+                    <span class="subtitle">Missions Leader - South India</span>
+                    <p>South India includes five states—Andhra Pradesh, Karnataka, Kerala, Tamil Nadu and Telangana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Voices of Disciples</span>
+            <h2>Soldier's Testimonials</h2>
+            <div class="divider-gold"></div>
+        </div>
+
+        <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="t-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Soldier 1">
+                        </div>
+                        <div class="t-content">
+                            <i class="fas fa-quote-left" style="position: absolute; top: -20px; left: -30px; font-size: 2rem; color: var(--gold); opacity: 0.4;"></i>
+                            <p class="t-text">In 2022, I met Pastor Israel Sagar when he preached at our church. Through Ecclesiastes 11:9-10, my life was transformed. I joined the ministry, letting go of many mistakes and sins. Despite my father's and sister's illnesses, I remained in the ministry, and God continues to guide me.</p>
+                            <span class="t-author">Srimati Anicha Churin</span>
+                            <span class="t-region">North-East Missions Team</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="t-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="Soldier 2">
+                        </div>
+                        <div class="t-content">
+                            <i class="fas fa-quote-left" style="position: absolute; top: -20px; left: -30px; font-size: 2rem; color: var(--gold); opacity: 0.4;"></i>
+                            <p class="t-text">I was lost in addiction until GST Global visited my village. The power of the Cross broke my chains in one meeting. Today, I am a frontline soldier preaching the same freedom to others who are bound.</p>
+                            <span class="t-author">Samuel Raj</span>
+                            <span class="t-region">North India Team</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="t-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80" alt="Soldier 3">
+                        </div>
+                        <div class="t-content">
+                            <i class="fas fa-quote-left" style="position: absolute; top: -20px; left: -30px; font-size: 2rem; color: var(--gold); opacity: 0.4;"></i>
+                            <p class="t-text">My journey with God began before I was born—my mother dedicated me to His ministry while I was in her womb. In my teenage years, I drifted away, but Brother Daniel taught me about God and connected me to prayer groups.</p>
+                            <span class="t-author">Bro. Anurag</span>
+                            <span class="t-region">South India Missions Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- EVANGELISM BOOTCAMP -->
+    <section class="bootcamp-section" id="bootcamp" style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; background-attachment: fixed; padding: var(--space-3xl) var(--space-xl); text-align: center; position: relative; overflow: hidden;">
+        <div class="bootcamp-content" data-aos="zoom-in">
+            <span class="section-tag">EVANGELISM BOOTCAMP</span>
+            <h2 class="neon-text">OUTREACH MISSION</h2>
+            <p style="color: #ccc; font-size: var(--text-lg); line-height: 1.9; margin-bottom: var(--space-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+                We train what we believe are the most effective evangelists in the world. 
+                Enrol today and carry the fire to every corner of the earth.
+            </p>
+            <a href="https://wa.me/919999999999?text=I%20want%20to%20enrol%20in%20the%20Evangelism%20Bootcamp" target="_blank" class="btn-brutal btn-glow">Enrol in Bootcamp</a>
+        </div>
+    </section>
+
+    <!-- FEATURED MISSIONS (Disciple School) -->
+    <section id="school" class="section-padding">
+        <div class="featured-mission" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80');" data-aos="fade-up">
+            <span class="section-tag">Armory</span>
+            <h2>Jesus Disciple School</h2>
+            <p>Training men and women to become spiritual warriors. Learn to walk in the Word and carry the fire through our intensive 3-month program covering theology, apologetics, and practical evangelism.</p>
+            <a href="javascript:void(0)" onclick="openPage('Disciple School', 'Our program is designed to strip away the distractions of the world and build a solid foundation of faith. We offer 3-month intensive training sessions covering theology, apologetics, and practical evangelism.')" class="btn-brutal">Program Info</a>
+        </div>
+    </section>
+
+    <!-- MISSIONS LIST -->
+    <section id="missions" class="section-padding">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Global Deployment</span>
+            <h2>Our Missions</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="missions-grid">
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Culture & Arts Hub</h3>
+                    <p>Enrol, Equip, Encourage. Offer your God-given talents back to Him.</p>
+                    <a href="javascript:void(0)" onclick="openPage('Arts Hub', 'Our Arts Hub is designed to help you discover, develop, and deploy your creative gifts for the Kingdom.')" class="btn-gallery">Learn More</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Encounter Nights</h3>
+                    <p>All Night Prayers—desperate seeking of God's presence and power.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Encounter Nights')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus War Room Mission</h3>
+                    <p>Prayer Warriors 24/7—standing in the gap for nations and souls.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('War Room')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Shepherds Mission</h3>
+                    <p>Building the Body of Christ through Servant's Meet and leadership.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Shepherds Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1509024644558-2f56ce76c490?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Faith Mission</h3>
+                    <p>Tracks & God's Word Distribution—spreading the Gospel in print.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Faith Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Gospel Mission</h3>
+                    <p>Global Conferences—apostolic gatherings for fire and awakening.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Gospel Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Children Mission</h3>
+                    <p>Raising a generation of fire-carriers from childhood.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Children Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Cross Mission</h3>
+                    <p>Training followers through Bible Study focused on carrying your cross.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Cross Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+            <div class="mission-card tilt-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="mission-img" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="mission-info">
+                    <h3>Jesus Love Mission</h3>
+                    <p>Charity work—loving the least of these through practical support.</p>
+                    <a href="javascript:void(0)" onclick="openGallery('Love Mission')" class="btn-gallery">View Gallery</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONNECT GROUPS BLOCK -->
+        <div class="featured-mission" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80'); margin-top: var(--space-2xl);" data-aos="fade-up">
+            <span class="section-tag">Join a Family</span>
+            <h2>Connect Groups</h2>
+            <p>Don't walk alone. Join a prayer group and experience the power of fellowship, accountability, and collective prayer.</p>
+            <a href="https://wa.me/919999999999?text=I%20want%20to%20join%20a%20Connect%20Group" target="_blank" class="btn-brutal">Join a Group</a>
+        </div>
+    </section>
+
+    <!-- BLOGS SECTION -->
+    <section id="blogs" class="section-padding" style="background: rgba(255,215,0,0.02);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Latest Updates</span>
+            <h2>Our Blogs</h2>
+            <div class="divider-gold"></div>
+        </div>
+        
+        <div data-aos="fade-up" style="text-align: center; margin-bottom: var(--space-xl);">
+            <p style="color: #aaa; font-size: var(--text-lg); max-width: 700px; margin: 0 auto; line-height: 1.8;">
+                Read inspiring testimonies, teachings, and updates from our missions across the globe.
+            </p>
+        </div>
+        
+        <div class="blog-preview-grid" data-aos="fade-up">
+            <div class="blog-card tilt-card">
+                <div class="blog-card-image">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <div class="blog-card-content" style="padding: var(--space-lg);">
+                    <span style="color: var(--gold); font-size: var(--text-xs); font-weight: 700;"><i class="far fa-calendar"></i> Latest Posts</span>
+                    <h3 style="font-size: var(--text-lg); color: var(--white); margin: var(--space-sm) 0;">Testimonies & Teachings</h3>
+                    <p style="color: #888; font-size: var(--text-sm); line-height: 1.6;">Read powerful stories of transformation and deep biblical teachings.</p>
+                </div>
+            </div>
+            <div class="blog-card tilt-card">
+                <div class="blog-card-image">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <div class="blog-card-content" style="padding: var(--space-lg);">
+                    <span style="color: var(--gold); font-size: var(--text-xs); font-weight: 700;"><i class="far fa-calendar"></i> Mission Updates</span>
+                    <h3 style="font-size: var(--text-lg); color: var(--white); margin: var(--space-sm) 0;">Mission Field Reports</h3>
+                    <p style="color: #888; font-size: var(--text-sm); line-height: 1.6;">Follow our teams as they reach the unreached across India and beyond.</p>
+                </div>
+            </div>
+            <div class="blog-card tilt-card">
+                <div class="blog-card-image">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="blog-card-content" style="padding: var(--space-lg);">
+                    <span style="color: var(--gold); font-size: var(--text-xs); font-weight: 700;"><i class="far fa-calendar"></i> Weekly Devotionals</span>
+                    <h3 style="font-size: var(--text-lg); color: var(--white); margin: var(--space-sm) 0;">Fire & Word</h3>
+                    <p style="color: #888; font-size: var(--text-sm); line-height: 1.6;">Weekly devotionals to ignite your faith and draw you closer to God.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: var(--space-xl);" data-aos="fade-up">
+            <a href="https://god-soldiers-team-global.blogspot.com/" target="_blank" class="visit-blog-btn">
+                <i class="fab fa-blogger-b"></i>
+                Visit Our Blog
+            </a>
+        </div>
+    </section>
+  
+    <!-- BELIEFS -->
+    <section id="beliefs" class="section-padding">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Foundation</span>
+            <h2>Our Core Beliefs</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="beliefs-grid" data-aos="fade-up">
+            <div class="belief-item"><div class="belief-num">1</div><p>True Repentance</p></div>
+            <div class="belief-item"><div class="belief-num">2</div><p>Born Again Life</p></div>
+            <div class="belief-item"><div class="belief-num">3</div><p>Water Baptism</p></div>
+            <div class="belief-item"><div class="belief-num">4</div><p>One God</p></div>
+            <div class="belief-item"><div class="belief-num">5</div><p>The Father</p></div>
+            <div class="belief-item"><div class="belief-num">6</div><p>The Son</p></div>
+            <div class="belief-item"><div class="belief-num">7</div><p>The Holy Spirit</p></div>
+            <div class="belief-item"><div class="belief-num">8</div><p>Spirit Baptism</p></div>
+            <div class="belief-item"><div class="belief-num">9</div><p>Divine Healing</p></div>
+            <div class="belief-item"><div class="belief-num">10</div><p>Marriage & Sexuality</p></div>
+            <div class="belief-item"><div class="belief-num">11</div><p>Judgement</p></div>
+            <div class="belief-item"><div class="belief-num">12</div><p>Eternal Life</p></div>
+        </div>
+    </section>
+
+    <!-- ACCEPTING JESUS NOW -->
+    <section id="accept" class="section-padding">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">The Decision</span>
+            <h2>Accepting Jesus Now</h2>
+            <div class="divider-gold"></div>
+        </div>
+        <div class="faq-container" data-aos="fade-up" style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-header" style="padding: var(--space-md) var(--space-lg); font-weight: 700; color: var(--gold); display: flex; justify-content: space-between; align-items: center; font-size: var(--text-lg);">If Yes? <i class="fas fa-plus"></i></div>
+                <div class="faq-content" style="padding: 0 var(--space-lg); max-height: 0; overflow: hidden; transition: 0.4s ease; color: #ccc; font-size: var(--text-base); line-height: 1.8;">You are accepting love and eternal life. God works within you to renew your purpose and transform you from the inside out.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-header" style="padding: var(--space-md) var(--space-lg); font-weight: 700; color: var(--gold); display: flex; justify-content: space-between; align-items: center; font-size: var(--text-lg);">Who is Jesus Christ? <i class="fas fa-plus"></i></div>
+                <div class="faq-content" style="padding: 0 var(--space-lg); max-height: 0; overflow: hidden; transition: 0.4s ease; color: #ccc; font-size: var(--text-base); line-height: 1.8;">Jesus is the Son of God, the Savior of the world, who came in human form to demonstrate God's love and provide forgiveness for our sins.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-header" style="padding: var(--space-md) var(--space-lg); font-weight: 700; color: var(--gold); display: flex; justify-content: space-between; align-items: center; font-size: var(--text-lg);">Why do we need Jesus? <i class="fas fa-plus"></i></div>
+                <div class="faq-content" style="padding: 0 var(--space-lg); max-height: 0; overflow: hidden; transition: 0.4s ease; color: #ccc; font-size: var(--text-base); line-height: 1.8;">He paid the penalty for our sins on the cross so that we would not have to. Through Him, we receive forgiveness, peace, purpose, and eternal life.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH VIDEO BACKGROUND -->
+    <footer id="enlist-footer">
+        <div class="footer-overlay"></div>
+        <video id="footer-video" autoplay muted loop playsinline>
+            <source src="https://player.vimeo.com/external/494252666.hd.mp4?s=2f5c711797f619934376485038c9281a89667794&profile_id=175" type="video/mp4">
+        </video>
+        <div data-aos="fade-up" id="contact">
+            <h2 class="neon-text">Join the Army</h2>
+            <p style="color: #ccc; font-size: var(--text-lg); margin-bottom: var(--space-xl);">The world is waiting for the manifestation of the Sons of God.</p>
+            <div class="btn-magnetic-wrap">
+                <a href="mailto:godsoldiersteam@gmail.com" class="btn-brutal btn-magnetic btn-glow">Enlist Now</a>
+            </div>
+            <div class="social-links">
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+            </div>
+            <p style="margin-top: var(--space-xl); font-size: var(--text-xs); color: #555; letter-spacing: 2px;">© 2026 GST GLOBAL. DESIGNED WITH GLORY.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 2500);
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scroll-progress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        let mouseX = 0, mouseY = 0;
+
+        window.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+            
+            cursorOutline.animate({
+                left: mouseX + 'px',
+                top: mouseY + 'px'
+            }, { duration: 500, fill: 'forwards' });
+        });
+
+        // Cursor hover effect
+        document.querySelectorAll('a, button, .mission-card, .blog-card, .belief-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = { threshold: 0.5 };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const speed = target / 50;
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += speed;
+                            counter.innerText = Math.ceil(current);
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Testimonials Swiper
+        new Swiper('.testimonials-swiper', {
+            loop: true,
+            speed: 800,
+            autoplay: { delay: 6000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            grabCursor: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true }
+        });
+
+        // 3D Tilt Effect
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Magnetic Buttons
+        document.querySelectorAll('.btn-magnetic').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Modal Functions
+        function openPage(title, content) {
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `<h2 style="color: var(--gold); margin-bottom: 1rem;">${title}</h2><p style="color: #ccc; line-height: 1.8;">${content}</p>`;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function openGallery(missionName) {
+            window.location.href = `gallery/index.html?mission=${encodeURIComponent(missionName)}`;
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const content = this.querySelector('.faq-content');
+                const icon = this.querySelector('.faq-header i');
+                
+                if (this.classList.contains('active')) {
+                    content.style.maxHeight = '0';
+                    content.style.padding = '0 var(--space-lg)';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = '300px';
+                    content.style.padding = '0 var(--space-lg) var(--space-md)';
+                    icon.style.transform = 'rotate(45deg)';
+                }
+            });
+        });
+
+        // Parallax Grid Floor
+        window.addEventListener('scroll', function() {
+            const floor = document.getElementById('floor');
+            const scrolled = window.scrollY;
+            floor.style.transform = `perspective(500px) rotateX(75deg) translateY(${scrolled * 0.1}px)`;
+        });
+
+        // Particle System
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = Math.random() > 0.8 ? '#FFD700' : '#444';
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 150) {
+                    const force = (150 - distance) / 150;
+                    this.x -= (dx / distance) * force * 3;
+                    this.y -= (dy / distance) * force * 3;
+                }
+                
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        // Create particles
+        for (let i = 0; i < 80; i++) {
+            particles.push(new Particle());
+        }
+
+        // Draw connections
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 215, 0, ${0.2 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Animation loop
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            drawConnections();
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // Create floating particles
+        function createFloatingParticles() {
+            const container = document.getElementById('floatingParticles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+                particle.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random() * 4 + 2}px;
+                    height: ${Math.random() * 4 + 2}px;
+                    background: ${Math.random() > 0.7 ? '#FFD700' : '#333'};
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 15}s;
+                    animation-duration: ${Math.random() * 10 + 10}s;
+                    opacity: ${Math.random() * 0.5 + 0.2};
+                `;
+                container.appendChild(particle);
+            }
+        }
+
+        createFloatingParticles();
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn-brutal, .btn-whatsapp, .btn-gallery').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
+                ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
